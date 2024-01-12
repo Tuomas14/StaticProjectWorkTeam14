@@ -6,13 +6,15 @@
 (https://)
 
 ### Tuomas
-- 
+- Meta updates
+- Footer
 
 #### Jani
 - 
 
 ##### Aapo
-- 
+- Header
+- metakontenttia
 
 
 
