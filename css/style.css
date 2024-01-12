@@ -17,6 +17,36 @@ body{
     background-size: 100%;
     }
 
+nav{
+color:white;
+background-color: black;
+padding: 1.8em;
+text-align: center;
+}
+
+nav ul{
+font-size: 20px;
+list-style-type: none;
+padding: 0;
+margin: 0;
+display: inline-block;
+}
+
+.top-menu li{
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.top-menu a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+}
+
+.top-menu a:hover{
+    color:white;
+    }
 
 footer{
 background-color: black;
