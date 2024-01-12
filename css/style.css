@@ -53,13 +53,18 @@ nav.top-menu p {
 
 .top-menu a{
     text-decoration: none;
-    color:black;
+    color:rgb(255, 255, 255);
     font-weight: bold;
+    transition: color 0.3s ease-in-out;
 }
-
 .top-menu a:hover{
-    color:white;
-    }
+    color:rgb(119, 119, 119);
+    text-decoration: underline;
+    font-size: 21px;
+}
+.top-menu a:visited{
+    color: #2f2828;
+}
 
 footer{
 background-color: black;
