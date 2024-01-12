@@ -32,6 +32,19 @@ margin: 0;
 display: inline-block;
 }
 
+nav p{
+    font-weight: bold;
+    color: white;
+}
+
+nav.top-menu p {
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+    max-width: 500px;
+    margin: auto;
+}
+
 .top-menu li{
     display: inline-block;
     text-align: center;
