@@ -6,8 +6,9 @@
 (https://)
 
 ### Tuomas
-- Meta updates
-- Footer
+- Meta content | Updates & optimization 
+- Footer & css
+- Navigation & css
 
 #### Jani
 - 
