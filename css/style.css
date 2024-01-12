@@ -2,10 +2,9 @@ header{
 
 }
 .h1spe{
-    font-size: 32px;
     margin: auto;
-    font-size: large;
-    color: aqua;
+    font-size: 32px;
+    color: rgb(17, 17, 17);
 }
 
 body{
