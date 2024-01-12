@@ -1,6 +1,11 @@
 header{
 
 }
+.h1spe{
+    background-image: url("../Images/coffeebeans.jpg");
+    font-size: 32px;
+    margin: auto;
+}
 
 body{
     background-color:lightcyan;
