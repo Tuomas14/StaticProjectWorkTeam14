@@ -70,6 +70,9 @@ nav.top-menu p {
 footer{
 background-color: black;
 color: white;
-padding: 20px;
-text-align: center;    
+padding: 10px;
+text-align: center;
+bottom: 0;
+position: fixed;
+width: 100%;
 }
