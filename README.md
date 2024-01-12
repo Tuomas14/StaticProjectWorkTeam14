@@ -6,7 +6,8 @@
 (https://)
 
 ### Tuomas
-- 
+- Meta updates
+- Footer
 
 #### Jani
 - 
