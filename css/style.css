@@ -2,9 +2,10 @@ header{
 
 }
 .h1spe{
-    background-image: url("../Images/coffeebeans.jpg");
     font-size: 32px;
     margin: auto;
+    font-size: large;
+    color: aqua;
 }
 
 body{
