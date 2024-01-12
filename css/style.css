@@ -4,6 +4,8 @@ header{
 .h1spe{
     margin: auto;
     font-size: 32px;
+    text-decoration: wavy;
+    padding: 1em;
     color: rgb(17, 17, 17);
 }
 
