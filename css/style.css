@@ -16,13 +16,22 @@ body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-image: url("../Images/coffeebackground.jpg");
     background-size: 100%;
-    }
-
+}
 nav{
 color:white;
 background-color: black;
 padding: 1.8em;
 text-align: center;
+align-items: center;
+justify-content: space-between;
+}
+.top-logo {
+    flex: 1;
+    text-align: center;
+}
+.top-logo img {
+    max-width: 100%;
+    height: auto;
 }
 
 nav ul{
