@@ -16,6 +16,7 @@
 ##### Aapo
 - Header
 - metakontenttia
+- kuvien haku
 
 
 
