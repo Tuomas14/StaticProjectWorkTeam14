@@ -11,7 +11,9 @@
 - Navigation & css
 
 #### Jani
-- 
+- Background styling
+- Nav bar styling
+- Nav bar logo
 
 ##### Aapo
 - Header
