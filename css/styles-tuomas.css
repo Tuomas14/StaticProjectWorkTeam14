@@ -1,29 +1,3 @@
-nav{
-    color:white;
-    background-color: black;
-    padding: 1.8em;
-    text-align: center;
-    align-items: center;
-    justify-content: space-between;
-}
-
-nav ul{
-    font-size: 20px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-nav p{
-    font-weight: bold;
-    color: white;
-}
-nav.top-menu p {
-    font-weight: bold;
-    color: black;
-    font-size: 16px;
-    max-width: 500px;
-    margin: auto;
-}
 .top-menu li{
     display: inline-block;
     text-align: center;
@@ -46,15 +20,4 @@ nav.top-menu p {
 
 .messagebox{
     padding: 2em;
-}
-
-footer{
-    background-color: black;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    bottom: 0;
-    position:relative;
-    width: 100%;
-    opacity: 70%;
 }
