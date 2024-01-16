@@ -6,6 +6,9 @@ body{
     font-family:'Courier New', Courier, monospace;
     background-image: url("../Images/coffeebackground.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+
 }
 header{
     display: flex;
@@ -27,7 +30,6 @@ header{
     padding: 1em;
     color: rgb(17, 17, 17);
 }
-
 nav{
     color:white;
     background-color: black;
@@ -90,7 +92,7 @@ footer{
     padding: 15px;
     text-align: center;
     bottom: 0;
-    position: fixed;
+    position:relative;
     width: 100%;
-    opacity: 70%;
+    opacity: 60%;
 }
