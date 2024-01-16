@@ -43,6 +43,11 @@ nav.top-menu p {
     color: rgb(147, 51, 51);
     transition: none;
 }
+
+.messagebox{
+    padding: 2em;
+}
+
 footer{
     background-color: black;
     color: white;
