@@ -9,6 +9,7 @@
 - Meta content | Updates & optimization 
 - Footer & css
 - Navigation & css
+- Form for palaute
 
 #### Jani
 - Background styling
