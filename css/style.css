@@ -45,18 +45,15 @@ nav{
     height: auto;
 }
 nav ul{
-<<<<<<< Updated upstream
     font-size: 20px;
     list-style-type: none;
     padding: 0;
     margin: 0;
-=======
 font-size: 20px;
 list-style-type: none;
 padding: 0;
 margin: 0;
 display: inline-block;
->>>>>>> Stashed changes
 }
 nav p{
     font-weight: bold;
@@ -89,7 +86,6 @@ nav.top-menu p {
 }
 
 footer{
-<<<<<<< Updated upstream
     background-color: black;
     color: white;
     padding: 15px;
@@ -97,7 +93,6 @@ footer{
     bottom: 0;
     position: fixed;
     width: 100%;
-=======
 background-color: black;
 color: white;
 padding: 10px;
@@ -105,5 +100,4 @@ text-align: center;
 bottom: 0;
 position: fixed;
 width: 100%;
->>>>>>> Stashed changes
 }
