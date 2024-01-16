@@ -14,6 +14,7 @@
 - Background styling
 - Nav bar styling
 - Nav bar logo
+- Flexbox to main-text
 
 ##### Aapo
 - Header
