@@ -33,6 +33,7 @@ justify-content: space-between;
     max-width: 100%;
     height: auto;
     border: solid;
+    border-style:groove
 }
 
 nav ul{
