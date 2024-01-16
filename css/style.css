@@ -78,6 +78,7 @@ nav.top-menu p {
     color:rgb(119, 119, 119);
     text-decoration: underline;
     transition: color 0.3s ease-in-out;
+    font-size: 21px;
 }
 .top-menu a:active{
     color: rgb(147, 51, 51);
@@ -91,4 +92,5 @@ footer{
     bottom: 0;
     position: fixed;
     width: 100%;
+    opacity: 70%;
 }

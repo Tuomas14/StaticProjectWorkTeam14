@@ -1,3 +1,9 @@
-footer{
+.Tuotteet{
     display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.Tuotteet img{
+    width: 30%;
+    text-align: center;
 }
