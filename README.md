@@ -3,7 +3,7 @@
 ## About your website (voi olla suomeksi)
 
 [Link to our layout]
-(https://)
+(https://tuomas14.github.io/StaticProjectWorkTeam14/)
 
 ### Tuomas
 - Meta content | Updates & optimization 
