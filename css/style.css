@@ -1,4 +1,5 @@
-header{
+.main-text{
+    text-align: center;
 
 }
 .h1spe{
@@ -8,7 +9,6 @@ header{
     padding: 1em;
     color: rgb(17, 17, 17);
 }
-
 body{
     scroll-behavior: smooth;
     background-color:lightcyan;
@@ -19,12 +19,12 @@ body{
     background-size: 100%;
 }
 nav{
-color:white;
-background-color: black;
-padding: 1.8em;
-text-align: center;
-align-items: center;
-justify-content: space-between;
+    color:white;
+    background-color: black;
+    padding: 1.8em;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
 }
 .top-logo {
     flex:1;
@@ -37,19 +37,16 @@ justify-content: space-between;
     border: solid;
     border-style:groove
 }
-
 nav ul{
-font-size: 20px;
-list-style-type: none;
-padding: 0;
-margin: 0;
+    font-size: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
-
 nav p{
     font-weight: bold;
     color: white;
 }
-
 nav.top-menu p {
     font-weight: bold;
     color: black;
@@ -77,11 +74,11 @@ nav.top-menu p {
     transition: none;
 }
 footer{
-background-color: black;
-color: white;
-padding: 15px;
-text-align: center;
-bottom: 0;
-position: fixed;
-width: 100%;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 }
