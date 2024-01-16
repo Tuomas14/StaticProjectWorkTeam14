@@ -1,5 +1,14 @@
+header{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: white;
+    opacity: 70%;
+}
 .main-text{
+    display: flex;
     text-align: center;
+    font-size: large;
 
 }
 .h1spe{
