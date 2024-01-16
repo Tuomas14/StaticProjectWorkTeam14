@@ -1,9 +1,9 @@
-
 body{
+    scroll-behavior: smooth;
     background-color:lightcyan;
     font-size: 14px;
     margin: auto;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:'Courier New', Courier, monospace;
     background-image: url("../Images/coffeebackground.jpg");
     background-size: 100%;
 }
@@ -37,26 +37,21 @@ nav{
     justify-content: space-between;
 }
 .top-logo {
-    flex: 1;
+    flex:1;
     text-align: center;
+    background-color: black;
 }
 .top-logo img {
     max-width: 100%;
     height: auto;
+    border: solid;
+    border-style:groove
 }
 nav ul{
-<<<<<<< Updated upstream
     font-size: 20px;
     list-style-type: none;
     padding: 0;
     margin: 0;
-=======
->>>>>>> Stashed changes
-font-size: 20px;
-list-style-type: none;
-padding: 0;
-margin: 0;
-display: inline-block;
 }
 nav p{
     font-weight: bold;
@@ -69,27 +64,26 @@ nav.top-menu p {
     max-width: 500px;
     margin: auto;
 }
-
 .top-menu li{
     display: inline-block;
     text-align: center;
     margin-right: 20px;
 }
-
 .top-menu a{
     text-decoration: none;
     color:rgb(255, 255, 255);
     font-weight: bold;
-    transition: color 0.3s ease-in-out;
 }
 .top-menu a:hover{
     color:rgb(119, 119, 119);
     text-decoration: underline;
-    font-size: 21px;
+    transition: color 0.3s ease-in-out;
 }
-
+.top-menu a:active{
+    color: rgb(147, 51, 51);
+    transition: none;
+}
 footer{
-<<<<<<< Updated upstream
     background-color: black;
     color: white;
     padding: 15px;
@@ -97,13 +91,4 @@ footer{
     bottom: 0;
     position: fixed;
     width: 100%;
-=======
->>>>>>> Stashed changes
-background-color: black;
-color: white;
-padding: 10px;
-text-align: center;
-bottom: 0;
-position: fixed;
-width: 100%;
 }
