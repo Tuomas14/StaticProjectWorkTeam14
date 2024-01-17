@@ -17,6 +17,7 @@ header{
     margin: 20px auto;
     max-width: 1200px;
     padding: 3.5em;
+    border-radius: 5px;
 }
 .main-text{
     font-size: 20px;
