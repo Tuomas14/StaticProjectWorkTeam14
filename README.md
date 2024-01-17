@@ -23,3 +23,4 @@
 - Header
 - metakontenttia
 - kuvien haku
+- table hinnasto
