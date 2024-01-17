@@ -16,6 +16,7 @@
 - Nav bar styling
 - Nav bar logo
 - Flexbox to main-text
+- Hienosäätöä footeriin, kuviin ja nav bariin.
 
 ##### Aapo
 - Header
