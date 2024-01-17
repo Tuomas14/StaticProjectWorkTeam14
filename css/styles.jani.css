@@ -1,4 +1,4 @@
-.Tuotteet{
+#Tuotteet{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 20px;
@@ -14,7 +14,7 @@
     flex-direction: column;
     text-align: center;
 }
-.Tuotteet img{
+#Tuotteet img{
     width: 100%;
     max-width: 80%;
     height: auto;
@@ -36,7 +36,7 @@
     text-align:left;
     
 }
-.Palaute{
+#Tarjouspyyntö{
     margin-left: 25px;
 }
 input{
