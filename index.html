@@ -15,13 +15,11 @@
 </head>
 
 <body>
-    <div class="top-logo">
+    <div id="top-logo">
         <img src="Images/fore.png" alt="kahvila-logo" height="100" width="280">
     </div>
 
     <nav class="top-menu">
-
-
         <ul>
             <li><a href="#" class="nav-link">Hinnasto</a></li>
             <li><a href="#" class="nav-link">Kahvila</a></li>
@@ -33,27 +31,41 @@
     <header class="main-text">
 
             <h1 class="h1spe"><u><em>Tervetuloa!</em></u></h1>
-            <article>Maan paras kahvilakokemus, eikä syyttä.</article> <br>
-            <article>Foresta saat aina tuoretta kahvia sekä lämpimät että kylmät leivonnaiset</article> <br>
-            <article>Meiltä myös tilaukset esim. työpaikan juhliin, valmistujaiset tms.</article> <br>
+            <article><em>Maan paras kahvilakokemus, eikä syyttä.</em></article><br>
+            <article><em>Foresta saat aina tuoretta kahvia sekä lämpimät että kylmät leivonnaiset</em></article> <br>
+            <article><em>emMeiltä myös tilaukset esim. työpaikan juhliin, valmistujaiset tms.</em></article> <br>
         
     </header>
 
     <article class="Tuotteet">
 
-        <h2><u>Leipomotuotteet</u></h2>
+        <div class="TuoteTekstit">
 
-        <h2><u>Suklaakakku</u></h2>
+            <u><h2 class="TuoteOtsikko">Leipomotuotteet</h2></u> <br>
 
-        <img src="Images/cake.jpg" alt="suklaakakku">
+            <em><h3 class="TuoteNimi">Suklaakakku</h3></em><br>
 
+            <p>Kahvila Foren jo klassikoksi muodostunut käsinleivottu suussasulava suklaakakku</p> <br>
+            <h6>4€, (G,VL)</h6>
+              
+        </div>
 
+            <img src="Images/cake.jpg" alt="suklaakakku">
 
+    
+        <div class="TuoteTekstit">
+
+            <em><h3 class="TuoteNimi">Päivän Keksi</h3></em><br>
+
+            <p>Käsinleivotut keksimme sopivat täydellisesti vaikka kaakaon kanssa ;) </p>
+            <h6>2€, (G,L)</h6>
+        </div>
+
+            <img src="Images/cookies.jpg" alt="suklaakeksi">
 
     </article>
 
 <aside>
-
 
     <div id="Hinnasto">
 
@@ -132,15 +144,11 @@
     <input type="text" name="name"><br>
     <label>Email:</label><br> 
     <input type="email" name="email"><br>
-    <label>Message:</label><br>
-        <textarea name="msg" id="" cols="40" rows="5"></textarea><br>
+    <label>Message:</label><br> 
+        <textarea name="msg" id="" cols="40" rows="5"></textarea><br><br><a href="#top-logo" button class="scrollToTopBtn">↑</button></a>
     <button type="button" class="btn btn-primary btn-sm">Lähetä</button>
-    </form>
-
-    <button class="scrollToTopBtn">↑</button>
 
     </div>
-
 
     <footer>
         <address>

@@ -1,14 +1,25 @@
 .Tuotteet{
     display: flex;
     flex-direction: column;
-    text-align: center;
+    background-color: rgb(255, 255, 255,0.8);
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px;
 }
 .Tuotteet img{
-    width: 30%;
-    float: right;
+    width: 40%;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    margin-left:200px;
+    margin: 2em;
+}
+.TuoteOtsikko{
+    text-align: center;
+    margin: 1em 0;
+}
+.TuoteTekstit{
+    margin: 2em;
+
 }
 .Palaute{
     margin-left: 25px;

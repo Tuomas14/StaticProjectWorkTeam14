@@ -2,25 +2,24 @@ body{
     scroll-behavior: smooth;
     background-color:lightcyan;
     font-size: 14px;
-    margin: auto;
     font-family:'Courier New', Courier, monospace;
     background-image: url("../Images/coffeebackground.jpg");
     background-size: 100%;
-    background-repeat: no-repeat;
-    overflow-x: hidden;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    height: 100dvh;
 }
 header{
     display: flex;
     flex-direction: column;
-    background-color: white;
-    opacity: 70%;
+    background-color:rgba(255, 255, 255,0.8);
     align-items: center;
-    margin: 0 auto;
-    max-width: 800px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 3.5em;
 }
 .main-text{
-    font-size: large;
-    font-weight: bold;
+    font-size: 20px;
 }
 .h1spe{
     margin: auto;
@@ -40,12 +39,12 @@ nav{
     width: 100%;
     
 }
-.top-logo {
+#top-logo {
     flex:1;
     text-align: center;
     background-color: black;
 }
-.top-logo img {
+#top-logo img {
     max-width: 100%;
     height: auto;
     border: solid;
