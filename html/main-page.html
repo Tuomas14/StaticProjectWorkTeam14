@@ -7,16 +7,16 @@
     <title>Kahvila FORE</title>
     <meta name="author" content="Team14 | Projekti">
     <meta name="description" content="Kahvilan nettisivut">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styles.aapo.css">
-    <link rel="stylesheet" href="css/styles.jani.css">
-    <link rel="stylesheet" href="css/styles-tuomas.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styles.aapo.css">
+    <link rel="stylesheet" href="../css/styles.jani.css">
+    <link rel="stylesheet" href="../css/styles-tuomas.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
     <div id="top-logo">
-        <img src="Images/fore.png" alt="kahvila-logo" height="100" width="280">
+        <img src="../images/fore.png" alt="kahvila-logo" height="100" width="280">
     </div>
 
     <nav class="top-menu">
@@ -41,7 +41,7 @@
 
         <div class="Tuote">
             <em><u><h2 class="TuoteOtsikko">Leipomotuotteet</h2></u></em><br><br>
-            <img src="Images/cake.jpg" alt="suklaakakku">
+            <img src="../images/cake.jpg" alt="suklaakakku">
             <div class="TuoteTekstit">
                 
                 <em><h3>Suklaakakku</h3></em><br>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="Tuote2">
-            <img src="Images/mansikkakakku.jpg" alt="mansikkakakku">
+            <img src="../images/mansikkakakku.jpg" alt="mansikkakakku">
             <div class="TuoteTekstit">
 
                 <em><h3>Mansikkajuustokakku</h3></em><br>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="Tuote">
-            <img src="Images/cookies.jpg" alt="suklaakeksi">
+            <img src="../images/cookies.jpg" alt="suklaakeksi">
             <div class="TuoteTekstit">
 
                 <em><h3>Päivän Keksi</h3></em><br>
@@ -72,7 +72,7 @@
 
 
         <div class="Tuote">
-            <img src="Images/donitsi.jpg" alt="donitsi">
+            <img src="../images/donitsi.jpg" alt="donitsi">
             <div class="TuoteTekstit">
             
                 <em><h3>Donitsi</h3></em><br>
@@ -83,7 +83,7 @@
 
 
         <div class="Tuote">
-            <img src="Images/croissant.jpg" alt="Croissant">
+            <img src="../images/croissant.jpg" alt="Croissant">
             <div class="TuoteTekstit">
 
                 <em><h3>Croissant</h3></em><br>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="Tuote">
-            <img src="Images/sämpylä.jpg" alt="Sämpylä">
+            <img src="../images/sämpylä.jpg" alt="Sämpylä">
             <div class="TuoteTekstit">
 
                 <em><h3>Talon Sämpylä</h3></em><br>
@@ -105,7 +105,7 @@
 
         <div class="Tuote">
             <u><h2 class="TuoteOtsikko2">Juomat</h2></u><br><br>
-            <img src="Images/cappuccino.jpg" alt="Erikoiskahvi">
+            <img src="../images/cappuccino.jpg" alt="Erikoiskahvi">
             <div class="TuoteTekstit">
 
                 <em><h3>Erikoiskahvi</h3></em><br>
@@ -115,7 +115,7 @@
         </div>
 
         <div class="Tuote2">
-            <img src="Images/limu.jpg" alt="Limu">
+            <img src="../images/limu.jpg" alt="Limu">
             <div class="TuoteTekstit">
 
                 <em><h3>Limu 33cl</h3></em><br>
@@ -202,11 +202,11 @@
         <u><b><h2 class="h2spec">Tarjouspyyntö</h2></b></u><br>
 
         <form method="post" action="process.php">
-            <label>Name:</label><br>
+            <label>Nimi:</label><br>
                 <input type="text" name="name"required><br>
-            <label>Email:</label><br> 
+            <label>Sähköposti:</label><br> 
                 <input type="email" name="email"required><br>
-            <label>Message:</label><br> 
+            <label>Viestisi:</label><br> 
                 <textarea name="msg" id="" cols="40" rows="5"required></textarea><br><br>
             <button type="button" class="btn btn-primary btn-sm">Lähetä</button>
 
