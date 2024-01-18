@@ -69,6 +69,7 @@ textarea{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    border-radius: 5px;
     max-width: 600px;
     margin: 10px auto;
     padding: 70px;
