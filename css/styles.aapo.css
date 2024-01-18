@@ -3,8 +3,6 @@
     font-size: 28px;
     text-decoration: wavy;
     text-align: center;
-    padding: 0.8;
-    color: (17,17,17);
 }
 aside{
     display: flex;
@@ -13,16 +11,14 @@ aside{
     height: 100vh;
     margin: 0;
 }
-
 .center-container {
-    width: 80%; 
+    width: 80%;
 }
 .center-table {
     width: 100%;
     border-collapse: collapse;
     margin: auto;
 }
-
 #Tables{
     background-color: rgb(255, 255, 255,0.8);
     max-width: 1200px;
@@ -31,4 +27,3 @@ aside{
     padding: 20px;
     border-radius: 5px;
 }
-
