@@ -12,6 +12,9 @@
 .h4spe{
     font-weight:normal
 }
+.h3spe{
+    font-weight: normal;
+}
 .Tuote{
     flex-direction: column;
     text-align: center;
