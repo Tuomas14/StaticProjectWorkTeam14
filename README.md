@@ -10,7 +10,6 @@
 - Footer | Ulkoasu
 - Navigation | Ulkoasu
 - Tarjouspyyntö | Asettelu | Ulkoasu
-- Changed index.html to main-page.html and updated all links and images
 - CSS Validation
 
 #### Jani
