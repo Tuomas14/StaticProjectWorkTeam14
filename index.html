@@ -191,33 +191,28 @@
 </div>
 </aside>
 
-    <main>
-
     <div id="Yhteystiedot">
 
         <u><b><h2 class="h2spec">Yhteystiedot</h2></b></u>
 
     </div>
+    
+        <div class="Tarjouspyyntö">
 
-    <div id="scrollButton">
-        <a href="#top-logo">↑</a>
-    </div>
+        <u><b><h2 class="h2spec">Tarjouspyyntö</h2></b></u><br>
 
+        <form method="post" action="process.php">
+            <label>Name:</label><br>
+                <input type="text" name="name"required><br>
+            <label>Email:</label><br> 
+                <input type="email" name="email"required><br>
+            <label>Message:</label><br> 
+                <textarea name="msg" id="" cols="40" rows="5"required></textarea><br><br>
+            <button type="button" class="btn btn-primary btn-sm">Lähetä</button>
 
-</main>
-
-    <div class="Tarjouspyyntö">
-
-    <u><b><h2 class="h2spec">Tarjouspyyntö</h2></b></u><br>
-
-    <form method="post" action="process.php">
-    <label>Name:</label><br>
-        <input type="text" name="name"required><br>
-    <label>Email:</label><br> 
-        <input type="email" name="email"required><br>
-    <label>Message:</label><br> 
-        <textarea name="msg" id="" cols="40" rows="5"required></textarea><br><br>
-    <button type="button" class="btn btn-primary btn-sm">Lähetä</button>
+        <div id="scrollButton">
+            <a href="#top-logo">↑</a>
+        </div>
 
     </div>
 

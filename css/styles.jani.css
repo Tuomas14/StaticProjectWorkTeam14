@@ -1,7 +1,7 @@
 #Tuotteet{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 20px;
+    gap: 10px;
     background-color: rgb(255, 255, 255,0.8);
     max-width: 1200px;
     margin: 0 auto;
@@ -30,12 +30,12 @@
 .TuoteOtsikko{
     text-align: center;
     margin: 1em 0;
-    margin-left: 450px; 
+    margin-left: 470px; 
 }
 .TuoteOtsikko2{
     text-align: center;
     margin: 1em 0;
-    margin-left: 500px; 
+    margin-left: 530px; 
 }
 .TuoteTekstit{
     margin: 2em;
@@ -56,8 +56,8 @@ input{
     padding: 10px;
     float: right;
     background-color: rgba(0, 0, 0, 0.5);
-    margin-right: 40px;
-    margin-top: 300px;
+    margin: 1em;
+    margin-right: 147px;
 }
 textarea{
     background-color: rgba(255, 255, 255, 0.2);
