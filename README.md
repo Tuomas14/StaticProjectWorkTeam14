@@ -7,9 +7,9 @@
 
 ### Tuomas
 - Meta content | Updates & optimization 
-- Footer & css
-- Navigation & css
-- Form for palaute
+- Footer | Ulkoasu
+- Navigation | Ulkoasu
+- Tarjouspyyntö | Asettelu | Ulkoasu
 
 #### Jani
 - Background styling
