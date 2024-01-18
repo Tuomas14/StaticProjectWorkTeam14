@@ -34,10 +34,6 @@
 .TuoteTekstit{
     margin: 2em;
     text-align:left;
-    
-}
-#Tarjouspyyntö{
-    margin-left: 25px;
 }
 input{
     background-color: rgba(255, 255, 255, 0.2);

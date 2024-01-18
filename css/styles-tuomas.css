@@ -1,14 +1,44 @@
-.top-menu li{
-    display: inline-block;
+.Tarjouspyyntö {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-right: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
 }
-.top-menu a{
-    text-decoration: none;
-    color:rgb(255, 255, 255);
-    font-weight: bold;
+
+.Tarjouspyyntö label {
+    margin-bottom: 8px;
 }
-.top-menu a:active{
-    color: rgb(147, 51, 51);
-    transition: none;
+
+.Tarjouspyyntö input {
+    width: 80%;
+    padding: 2px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.Tarjouspyyntö textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.Tarjouspyyntö button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Tarjouspyyntö button.scrollToTopBtn {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
