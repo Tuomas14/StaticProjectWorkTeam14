@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /private/
+Sitemap: https://tuomas14.github.io/StaticProjectWorkTeam14/sitemap.xml
