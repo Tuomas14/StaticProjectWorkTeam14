@@ -135,9 +135,4 @@ footer{
         height: auto;
         grid-template-columns: 1fr;
     }
-    #top-logo{        /* Kahvilan logoa säädetty pienemmäksi, kuva latasi mobiilitestissä liian pitkään */
-        width: 50%;
-        height: auto;
-        margin: 0 auto;
-    }
 }
