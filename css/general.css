@@ -121,7 +121,7 @@ footer{
     .TuoteOtsikko,
     .TuoteOtsikko2 {
         text-align: center;
-        margin: 0 auto !important;
+        margin: 0 auto !important; /*!important toimii "overridena", teksti ei muuten siirtynyt mobiilinäkymässä ilman sitä */
     }
     .Tuote, .Tuote2 {
         display: flex;
@@ -131,6 +131,8 @@ footer{
         margin: 10px;
     }
     #Tuotteet{
+        max-width: 100%;
+        height: auto;
         grid-template-columns: 1fr;
     }
 }
