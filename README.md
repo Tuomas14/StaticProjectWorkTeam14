@@ -26,3 +26,4 @@
 - kuvien haku
 - table hinnasto
 - html validation
+- figman teko
