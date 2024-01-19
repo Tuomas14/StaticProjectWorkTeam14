@@ -25,3 +25,4 @@
 - metakontenttia
 - kuvien haku
 - table hinnasto
+- html validation
