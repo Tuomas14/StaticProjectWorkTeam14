@@ -113,7 +113,7 @@ footer{
         height: auto;
     }
     nav.top-menu li{
-        padding: 10px;
+        padding: 5px;
     }
     nav ul {
         font-size: 26px; 
@@ -121,7 +121,7 @@ footer{
     .TuoteOtsikko,
     .TuoteOtsikko2 {
         text-align: center;
-        margin: 0 auto !important; /*!important toimii "overridena", teksti ei muuten siirtynyt mobiilinäkymässä ilman sitä */
+        margin: 0 auto !important; /*!important toimii "overridena", teksti ei muuten siirtynyt näytön keskelle mobiilinäkymässä ilman sitä */
     }
     .Tuote, .Tuote2 {
         display: flex;
@@ -134,5 +134,10 @@ footer{
         max-width: 100%;
         height: auto;
         grid-template-columns: 1fr;
+    }
+    #top-logo{        /* Kahvilan logoa säädetty pienemmäksi, kuva latasi mobiilitestissä liian pitkään */
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
     }
 }
