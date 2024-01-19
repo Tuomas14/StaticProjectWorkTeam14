@@ -98,13 +98,25 @@ footer{
     width: 100%;
 }
 
-/* CSS koodit mobiililaitteita varten */
-@media only screen and (max-width: 800px) {
+/* CSS Tyylit mobiililaitteita varten */
+
+@media only screen and (max-width: 600px) {
+
+    body{
+        font-size: 16px;
+    }
     header {
         margin: 40px auto; 
     }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+    nav.top-menu li{
+        padding: 10px;
+    }
     nav ul {
-        font-size: 16px; 
+        font-size: 26px; 
     }
     .TuoteOtsikko,
     .TuoteOtsikko2 {
@@ -117,5 +129,8 @@ footer{
         align-items: center;
         text-align: center;
         margin: 10px;
+    }
+    #Tuotteet{
+        grid-template-columns: 1fr;
     }
 }
