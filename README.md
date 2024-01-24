@@ -10,6 +10,8 @@
 - Footer | Ulkoasu
 - Navigation | Ulkoasu
 - Tarjouspyyntö | Asettelu | Ulkoasu
+- Figman tekoa
+- Hienosäätöä koodiin ja korjauksia
 - CSS Validation
 
 #### Jani
