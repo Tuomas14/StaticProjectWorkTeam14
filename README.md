@@ -12,6 +12,7 @@
 - Tarjouspyyntö | Asettelu | Ulkoasu
 - Figman tekoa
 - Hienosäätöä koodiin ja korjauksia
+- Kommentteja
 - CSS Validation
 
 #### Jani

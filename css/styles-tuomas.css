@@ -1,3 +1,4 @@
+/* Flexbox pystysuuntaisesti, keskitetään teksti ja sisältö keskelle ja asetetaan muita tarkennuksia/parametreja*/
 .Tarjouspyyntö {
     display: flex;
     flex-direction: column;
@@ -10,10 +11,12 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Marginaali */
 .Tarjouspyyntö label {
     margin-bottom: 8px;
 }
 
+/* Input-elementille leveys, padding, marginaali ja laatikon koko */
 .Tarjouspyyntö input {
     width: 80%;
     padding: 2px;
@@ -21,6 +24,7 @@
     box-sizing: border-box;
 }
 
+/* Tekstikenttä-elementille erilaisia määrittelyitä. Leveys, padding, marginaali, laatikon koko */
 .Tarjouspyyntö textarea {
     width: 100%;
     padding: 8px;
@@ -28,6 +32,7 @@
     box-sizing: border-box;
 }
 
+/* Tarjouspyyntö-napin asetukset */
 .Tarjouspyyntö button {
     margin-bottom: 30px;
     padding: 8px 16px;
