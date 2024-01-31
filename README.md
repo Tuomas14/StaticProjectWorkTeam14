@@ -30,6 +30,7 @@ Yksi alkaa tekemään headeria. Toinen footeria ja yksi taas main kontenttia.
 - Hienosäätöä footeriin, kuviin ja nav bariin.
 - Tuotekuvat, Tekstit, Asettelu ja ulkoasu.
 - Mobiililaitteille optimointi
+- Markupit hakukoneita varten
 
 ###### Aapo
 - Header
