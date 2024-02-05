@@ -81,3 +81,33 @@ textarea{
 .varaus{
     font-size: 25px;
 }
+nav.top-menu .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+}
+
+nav.top-menu .dropdown-menu li {
+    padding: 12px 16px;
+    text-align: center;
+}
+
+nav.top-menu .dropdown-menu a {
+    display: block;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav.top-menu .dropdown-menu a:hover {
+    background-color: #d4cdcd;
+    font-size: 16px;
+}
+
+nav.top-menu .dropdown:hover .dropdown-menu {
+    display: block;
+}
+nav.top-menu .dropdown:active .dropdown-menu{
+    color: rgb(147,51,51);
+}
