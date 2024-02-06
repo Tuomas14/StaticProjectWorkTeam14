@@ -82,7 +82,7 @@ nav.top-menu p {
     color:rgb(119, 119, 119);
     text-decoration: underline;
     transition: color 0.3s ease-in-out;
-    font-size: 26px;
+    font-size: 25px;
 }
 .top-menu a:active{
     color: rgb(147, 51, 51);
