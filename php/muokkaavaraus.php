@@ -5,7 +5,7 @@ $muokattava=isset($_GET["muokattava"]) ? $_GET["muokattava"] : "";
 
 //Jos tietoa ei ole annettu, palataan listaukseen
 if (empty($muokattava)){
-    header("Location:./henkilolista.php");
+    header("Location:../pages/tietuettaeiloydy.html");
     exit;
 }
 
