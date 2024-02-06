@@ -11,7 +11,7 @@ $puhelinnro=isset($_POST["puhelinnro"]) ? $_POST["puhelinnro"] : "";
 //Jos ei jompaa kumpaa tai kumpaakaan tietoa ole annettu
 //ohjataan pyyntö takaisin lomakkeelle
 if (empty($etunimi) || empty($sukunimi) || empty($asiakasID)|| empty($sahkoposti) || empty($puhelinnro)){
-    header("Location:../html/tietuettaeiloydy.html");
+    header("Location:../pages/tietuettaeiloydy.html");
     exit;
 }
 //Tehdään sql-lause, jossa kysymysmerkeillä osoitetaan paikat
@@ -28,7 +28,7 @@ $tilaID=isset($_POST["tilaID"]) ? $_POST["tilaID"] : "";
 $tilan_nimi=isset($_POST["tilan_nimi"]) ? $_POST["tilan_nimi"] : "";
 
 if (empty($tilan_nimi) ||empty($tilaID)){
-    header("Location:../html/tietuettaeiloydy.html");
+    header("Location:../pages/tietuettaeiloydy.html");
     exit;
 }
 
@@ -42,7 +42,7 @@ $varauspvm=isset($_POST["varauspvm"]) ? $_POST["varauspvm"] : "";
 $varausaika=isset($_POST["varausaika"]) ? $_POST["varausaika"] : "";
 
 if (empty($varauspvm) ||empty($varausaika) ||empty($varaustunnus)){
-    header("Location:../html/tietuettaeiloydy.html");
+    header("Location:../pages/tietuettaeiloydy.html");
     exit;
 }
 
