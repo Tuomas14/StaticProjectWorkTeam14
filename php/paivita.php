@@ -20,7 +20,7 @@ $sql="update ASIAKAS set etunimi=?, sukunimi=?, sahkoposti=?, puhelinnro=? where
 //Valmistellaan sql-lause
 $stmt=mysqli_prepare($yhteys, $sql);
 //Sijoitetaan muuttujat oikeisiin paikkoihin
-mysqli_stmt_bind_param($stmt, 'sssii', $etunimi, $sukunimi, $sahkoposti, $puhelinnro, $asiakasID);
+mysqli_stmt_bind_param($stmt, 'ssssi', $etunimi, $sukunimi, $sahkoposti, $puhelinnro, $asiakasID);
 //Suoritetaan sql-lause
 mysqli_stmt_execute($stmt);
 
@@ -32,7 +32,7 @@ if (empty($tilan_nimi) ||empty($tilaID)){
     exit;
 }
 
-$sql="update TILA set tilan_nimi=?, where tilaID=?";
+$sql="update TILA set tilan_nimi=? where tilaID=?";
 $stmt=mysqli_prepare($yhteys, $sql);
 mysqli_stmt_bind_param($stmt, 'si', $tilan_nimi, $tilaID);
 mysqli_stmt_execute($stmt);
@@ -46,7 +46,7 @@ if (empty($varauspvm) ||empty($varausaika) ||empty($varaustunnus)){
     exit;
 }
 
-$sql="update VARAUKSET set varauspvm=?, varausaika=?, where varaustunnus=?";
+$sql="update VARAUKSET set varauspvm=?, varausaika=? where varaustunnus=?";
 $stmt=mysqli_prepare($yhteys, $sql);
 mysqli_stmt_bind_param($stmt, 'ssi', $varauspvm, $varausaika, $varaustunnus);
 mysqli_stmt_execute($stmt);

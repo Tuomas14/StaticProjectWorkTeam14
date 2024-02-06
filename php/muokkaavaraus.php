@@ -59,9 +59,11 @@ if (!$rivi=mysqli_fetch_object($tulos)){
 <!-- id-kenttä on readonly, koska sitä ei ole tarkoitus muuttaa -->
 
 <form action='./paivita.php' method='post'>
-id:<input type='text' name='id' value='<?php print $rivi->id;?>' readonly><br>
+asiakasID:<input type='text' name='asiakasID' value='<?php print $rivi->asiakasID;?>' readonly><br>
 etunimi:<input type='text' name='etunimi' value='<?php print $rivi->etunimi;?>'><br>
 sukunimi:<input type='text' name='sukunimi' value='<?php print $rivi->sukunimi;?>'><br>
+sahkoposti:<input type='email' name='sahkoposti' value='<?php print $rivi->sahkoposti;?>'><br>
+puhelinnro:<input type='tel' name='puhelinnro' value='<?php print $rivi->puhelinnro;?>'><br>
 <input type='submit' name='ok' value='ok'><br>
 </form>
 
