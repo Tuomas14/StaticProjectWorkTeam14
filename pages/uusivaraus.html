@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="../css/styles.aapo.css">
     <link rel="stylesheet" href="../css/styles.jani.css">
     <link rel="stylesheet" href="../css/styles-tuomas.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <!-- Bootstrap linkki -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -41,7 +45,7 @@ Tilavaraus | Kahvila FORE
         <input type="radio" name="tilan_nimi" value="3"/>Koko kahvila(100-150 hlö) sis. pitopalvelun<p><em>125e/h</em></p><br>
 
         <h2><u>Valitse varauksen kesto</u></h2><br>
-        <select name="varauksen kesto" id="varauksen_kesto" form="varauksen_kesto">
+        <select class="form-control" id="varauksen_kesto" form="varauksen_kesto">
             <option value="1 tuntia">1 tuntia</option>
             <option value="2 tuntia">2 tuntia</option>
             <option value="3 tuntia">3 tuntia</option>
@@ -53,7 +57,7 @@ Tilavaraus | Kahvila FORE
         <h2><u>Lisätiedot ja toiveet</u></h2><br>
         <textarea name='lisätiedot' cols='50' rows='5'></textarea><br><br>
         
-        <input type="submit" name="vahvista" value="Vahvista varaus"/>
+        <button type="submit" class="btn btn-primary btn-sm">VAHVISTA VARAUS</button>
 
     </form>
 
