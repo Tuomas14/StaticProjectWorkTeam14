@@ -22,6 +22,34 @@ if (!$rivi=mysqli_fetch_object($tulos)){
     header("Location:../pages/tietuettaeiloydy.html");
     exit;
 }
+
+$sql="select * from TILA where tilaID=?";
+$stmt=mysqli_prepare($yhteys, $sql);
+//Sijoitetaan muuttuja sql-lauseeseen
+mysqli_stmt_bind_param($stmt, 'i', $muokattava);
+//Suoritetaan sql-lause
+mysqli_stmt_execute($stmt);
+//Koska luetaan prepared statementilla, tulos haetaan 
+//metodilla mysqli_stmt_get_result($stmt);
+$tulos=mysqli_stmt_get_result($stmt);
+if (!$rivi=mysqli_fetch_object($tulos)){
+    header("Location:../pages/tietuettaeiloydy.html");
+    exit;
+}
+
+$sql="select * from VARAUKSET where varaustunnus=?";
+$stmt=mysqli_prepare($yhteys, $sql);
+//Sijoitetaan muuttuja sql-lauseeseen
+mysqli_stmt_bind_param($stmt, 'i', $muokattava);
+//Suoritetaan sql-lause
+mysqli_stmt_execute($stmt);
+//Koska luetaan prepared statementilla, tulos haetaan 
+//metodilla mysqli_stmt_get_result($stmt);
+$tulos=mysqli_stmt_get_result($stmt);
+if (!$rivi=mysqli_fetch_object($tulos)){
+    header("Location:../pages/tietuettaeiloydy.html");
+    exit;
+}
 ?>
 
 
