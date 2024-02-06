@@ -19,33 +19,34 @@
 
 <nav class="varaus">
 
-<h1>
-Tilavaraus | Kahvila FORE  
-</h1>    
+<h1>Tilavaraus | Kahvila FORE </h1>    
 
 </nav>
 
 
 <div id="Varaustiedot">
 
-    <form id='varauslomake' action="./tallenna.php" method="post" enctype="text/plain">
+    <form id='varauslomake' action="../php/tallenna.php" method="post" enctype="text/plain">
   
 
-        <h2><u>Syötä henkilötiedot</u></h2>
+        <h4><u>Valitse varauksen päivämäärä</u></h4><br>
+        Päivämäärä: <input type="date" name="varauspvm"/><br><br>
 
-        Etunimi: <input type="text" name="enimi" value="" size="30" maxlength="25"/> <br><br>
-        Sukunimi: <input type="text" name="snimi" value="" size="30" maxlength="25"/> <br><br>
-        Sähköposti: <input type="email" name="spost" value="" size="30" maxlength="30"/> <br><br>
-        Puhelin: <input type="tel" name="puhnro" value="" size="30" maxlength="15"/> <br><br>
+        <h4><u>Syötä henkilötiedot</u></h4><br>
+
+        Etunimi: <input type="text" name="etunimi" value="" size="30" maxlength="25"/> <br><br>
+        Sukunimi: <input type="text" name="sukunimi" value="" size="30" maxlength="25"/> <br><br>
+        Sähköposti: <input type="email" name="sahkoposti" value="" size="30" maxlength="30"/> <br><br>
+        Puhelin: <input type="tel" name="puhelinnro" value="" size="30" maxlength="15"/> <br><br>
         <br><br>
 
-        <h2><u>Valitse varattava tila</u></h2><br>
+        <h4><u>Valitse varattava tila</u></h4><br>
         <input type="radio" name="tilan_nimi" value="1"/>Iso kabinetti (40-50 hlö) <p><em>75e/h</em></p><br>
         <input type="radio" name="tilan_nimi" value="2"/>Pieni kabinetti(15-20 hlö) <p><em>40e/h</em></p><br>
         <input type="radio" name="tilan_nimi" value="3"/>Koko kahvila(100-150 hlö) sis. pitopalvelun<p><em>125e/h</em></p><br>
 
-        <h2><u>Valitse varauksen kesto</u></h2><br>
-        <select class="form-control" id="varauksen_kesto" form="varauksen_kesto">
+        <h4><u>Valitse varauksen kesto</u></h4><br>
+        <select class="form-control" id="varausaika" name="varausaika" form="varauslomake">
             <option value="1 tuntia">1 tuntia</option>
             <option value="2 tuntia">2 tuntia</option>
             <option value="3 tuntia">3 tuntia</option>
@@ -53,8 +54,8 @@ Tilavaraus | Kahvila FORE
             <option value="5 tuntia">5 tuntia</option>
             <option value="6 tuntia">6 tuntia</option>
           </select>
-        
-        <h2><u>Lisätiedot ja toiveet</u></h2><br>
+        <br>
+        <h4><u>Lisätiedot ja toiveet</u></h4><br>
         <textarea name='lisätiedot' cols='50' rows='5'></textarea><br><br>
         
         <button type="submit" class="btn btn-primary btn-sm">VAHVISTA VARAUS</button>
@@ -62,11 +63,6 @@ Tilavaraus | Kahvila FORE
     </form>
 
 </div>
-
-
-
-
-
-    
+ 
 </body>
 </html>

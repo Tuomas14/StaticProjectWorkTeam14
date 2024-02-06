@@ -7,7 +7,7 @@ try{
     $yhteys=mysqli_connect($init["palvelin"], $init ["tunnus"], $init["pass"], $init["tk"]);
 }
 catch(Exception $e){
-    header("Location:../html/yhteysvirhe.html");
+    header("Location:../pages/yhteysvirhe.html");
     exit;
 }
 
