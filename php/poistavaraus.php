@@ -5,7 +5,7 @@ $poistettava=isset($_GET["poistettava"]) ? $_GET["poistettava"] : "";
 
 //Jos tieto on annettu, poistetaan tietokannasta
 if (!empty($poistettava)){
-    $sql="DELETE FROM henkilo WHERE id=?";
+    $sql="DELETE FROM varaukset WHERE id=?";
     $stmt=mysqli_prepare($yhteys, $sql);
     //Sijoitetaan muuttuja sql-lauseeseen
     mysqli_stmt_bind_param($stmt, 'i', $poistettava);
