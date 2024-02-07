@@ -13,10 +13,10 @@ include ("./connect.php");
     $lisatiedot = isset($_POST["lisatiedot"]) ? $_POST["lisatiedot"] : "";
 
 
-    // if (empty($varauspvm) || empty($etunimi) || empty($sukunimi)|| empty($sahkoposti)|| empty($puhelinnro)|| empty($tilan_nimi)|| empty($varausaika)){
-    //     header("Location:../pages/yhteysvirhe.html");
-    //     exit;
-    // }
+    if (empty($varauspvm) || empty($etunimi) || empty($sukunimi)|| empty($sahkoposti)|| empty($puhelinnro)|| empty($tilan_nimi)|| empty($varausaika)){
+        header("Location:../pages/yhteysvirhe.html");
+        exit;
+    }
 
     // Lisätään henkilötiedot tietokantaan
     $sql_asiakas = "insert into ASIAKAS (etunimi, sukunimi, sahkoposti, varaustunnus, puhelinnro) VALUES (?, ?, ?, ?, ?)";
