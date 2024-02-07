@@ -1,6 +1,10 @@
 <?php
 include ("./connect.php");
 
+
+
+    $varaustunnus = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
+
     $varauspvm=isset($_POST["varauspvm"]) ? $_POST["varauspvm"] : "";
     $etunimi=isset($_POST["etunimi"]) ? $_POST["etunimi"] : "";
     $sukunimi=isset($_POST["sukunimi"]) ? $_POST["sukunimi"] : "";
@@ -8,7 +12,8 @@ include ("./connect.php");
     $puhelinnro=isset($_POST["puhelinnro"]) ? $_POST["puhelinnro"] : "";
     $tilan_nimi = isset($_POST["tilan_nimi"]) ? $_POST["tilan_nimi"] : "";
     $varausaika = isset($_POST["varausaika"]) ? $_POST["varausaika"] : "";
-    $lisatiedot = isset($_POST["lisätiedot"]) ? $_POST["lisätiedot"] : "";
+    $lisatiedot = isset($_POST["lisatiedot"]) ? $_POST["lisatiedot"] : "";
+
 
     if (empty($varauspvm) || empty($etunimi) || empty($sukunimi)|| empty($sahkoposti)|| empty($puhelinnro)|| empty($tilan_nimi)|| empty($varausaika)){
         header("Location:../pages/yhteysvirhe.html");
@@ -16,24 +21,27 @@ include ("./connect.php");
     }
 
     // Lisätään henkilötiedot tietokantaan
-    $sql_asiakas = "insert into ASIAKAS (etunimi, sukunimi, sahkoposti, puhelinnro) VALUES (?, ?, ?, ?)";
+    $sql_asiakas = "insert into ASIAKAS (etunimi, sukunimi, sahkoposti, puhelinnro, varaustunnus) VALUES (?, ?, ?, ?, ?)";
     $stmt_asiakas = mysqli_prepare($yhteys, $sql_asiakas);
-    mysqli_stmt_bind_param($stmt_asiakas, 'sssi', $etunimi, $sukunimi, $sahkoposti, $puhelinnro);
+    mysqli_stmt_bind_param($stmt_asiakas, 'ssssi', $etunimi, $sukunimi, $sahkoposti, $varaustunnus, $puhelinnro);
     mysqli_stmt_execute($stmt_asiakas);
 
     // Lisätään varaustiedot tietokantaan
-    $sql_varaus = "insert into VARAUKSET (varausaika, varauspvm) VALUES (?, ?)";
+    $sql_varaus = "insert into VARAUKSET (varausaika, varauspvm, varaustunnus) VALUES (?, ?)";
     $stmt_varaus = mysqli_prepare($yhteys, $sql_varaus);
-    mysqli_stmt_bind_param($stmt_varaus, 'ss', $varausaika, $varauspvm);
+    mysqli_stmt_bind_param($stmt_varaus, 'sss', $varausaika, $varauspvm, $varaustunnus);
     mysqli_stmt_execute($stmt_varaus);
 
     // Lisätään tilatiedot tietokantaan
-    $sql_tila = "insert into TILA (tilan_nimi) VALUES (?)";
+    $sql_tila = "insert into TILA (tilan_nimi, varaustunnus) VALUES (?, ?)";
     $stmt_tila = mysqli_prepare($yhteys, $sql_tila);
-    mysqli_stmt_bind_param($stmt_tila, 's', $tilan_nimi);
+    mysqli_stmt_bind_param($stmt_tila, 'ss', $tilan_nimi, $varaustunnus);
     mysqli_stmt_execute($stmt_tila);
 
     // Suljetaan tietokantayhteys
     mysqli_close($yhteys);
     exit;
+
+    // Näytetään varaustunnus käyttäjälle
+    echo "Varaustunnuksesi on: " . $varaustunnus;
 ?>
