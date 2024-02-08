@@ -12,22 +12,23 @@ include ("./connect.php");
     $varausaika = isset($_POST["varausaika"]) ? $_POST["varausaika"] : "";
     $lisatiedot = isset($_POST["lisatiedot"]) ? $_POST["lisatiedot"] : "";
 
-
     if (empty($varauspvm) || empty($etunimi) || empty($sukunimi)|| empty($sahkoposti)|| empty($puhelinnro)|| empty($tilan_nimi)|| empty($varausaika)){
-        header("Location:../pages/yhteysvirhe.html");
+        header("Location:../pages/tietuettaeiloydy.html");
         exit;
     }
 
     // Lisätään henkilötiedot tietokantaan
     $sql_asiakas = "insert into ASIAKAS (etunimi, sukunimi, sahkoposti, varaustunnus, puhelinnro) VALUES (?, ?, ?, ?, ?)";
     $stmt_asiakas = mysqli_prepare($yhteys, $sql_asiakas);
-    mysqli_stmt_bind_param($stmt_asiakas, 'ssssi', $etunimi, $sukunimi, $sahkoposti, $varaustunnus, $puhelinnro);
+    mysqli_stmt_bind_param($stmt_asiakas, 'sssss', $etunimi, $sukunimi, $sahkoposti, $varaustunnus, $puhelinnro);
     mysqli_stmt_execute($stmt_asiakas);
 
+    $asiakasID = mysqli_insert_id($yhteys);
+
     // Lisätään varaustiedot tietokantaan
-    $sql_varaus = "insert into VARAUKSET (varauspvm, varaustunnus, varausaika) VALUES (?, ?, ?)";
+    $sql_varaus = "INSERT INTO VARAUKSET (varauspvm, varaustunnus, lisatiedot, varausaika, asiakasID) VALUES (?, ?, ?, ?, ?)";
     $stmt_varaus = mysqli_prepare($yhteys, $sql_varaus);
-    mysqli_stmt_bind_param($stmt_varaus, 'ssi', $varauspvm, $varaustunnus, $varausaika);
+    mysqli_stmt_bind_param($stmt_varaus, 'sssii', $varauspvm, $varaustunnus, $lisatiedot, $varausaika, $asiakasID);
     mysqli_stmt_execute($stmt_varaus);
 
     // Lisätään tilatiedot tietokantaan
@@ -42,4 +43,5 @@ include ("./connect.php");
 
     // Suljetaan tietokantayhteys
     mysqli_close($yhteys);
+
 ?>

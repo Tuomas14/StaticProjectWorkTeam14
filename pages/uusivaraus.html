@@ -27,37 +27,38 @@
 
     <form id='varauslomake' action="../php/tallenna.php" method="post" enctype="application/x-www-form-urlencoded">
 
-
-        <h4><u>Valitse varauksen päivämäärä</u></h4><br>
-        Päivämäärä: <input type="date" name="varauspvm" required/><br><br>
+        <h4><u>Valitse varauksen ajankohta</u></h4><br>
+        Päivämäärä: * <input type="date" name="varauspvm" required/> <br><br>
 
         <h4><u>Syötä henkilötiedot</u></h4><br>
 
-        Etunimi: <input type="text" name="etunimi" value="" size="30" maxlength="25"/> <br><br>
-        Sukunimi: <input type="text" name="sukunimi" value="" size="30" maxlength="25"/> <br><br>
-        Sähköposti: <input type="email" name="sahkoposti" value="" size="30" maxlength="30"/> <br><br>
-        Puhelin: <input type="text" name="puhelinnro" value="" size="30" maxlength="15"/> <br><br>
+        Etunimi: * <input type="text" name="etunimi" value="" placeholder="Etunimi" size="30" maxlength="25" required/> <br><br>
+        Sukunimi: * <input type="text" name="sukunimi" value="" placeholder="Sukunimi" size="30" maxlength="25" required/> <br><br>
+        Sähköposti: * <input type="email" name="sahkoposti" value="" placeholder="nimi@esimerkki.com" size="30" maxlength="30" required/> <br><br>
+        Puhelin: * <input type="text" name="puhelinnro" value="" placeholder="+358, 040, 044..." size="30" maxlength="15" required/> <br><br>
         <br><br>
 
-        <h4><u>Valitse varattava tila</u></h4><br>
-        <input type="radio" name="tilan_nimi" value="Iso kabinetti"/>Iso kabinetti (40-50 hlö) <p><em>75e/h</em></p><br>
-        <input type="radio" name="tilan_nimi" value="Pieni kabinetti"/>Pieni kabinetti(15-20 hlö) <p><em>40e/h</em></p><br>
-        <input type="radio" name="tilan_nimi" value="Koko kahvila"/>Koko kahvila(100-150 hlö) sis. pitopalvelun<p><em>125e/h</em></p><br>
+        <h4><u>Valitse varattava tila *</u></h4><br>
+        <input type="radio" name="tilan_nimi" value="Iso kabinetti" required/>Iso kabinetti (40-50 hlö) <p><em>75e/h</em></p> <br>
+        <input type="radio" name="tilan_nimi" value="Pieni kabinetti" required/>Pieni kabinetti(15-20 hlö) <p><em>40e/h</em></p><br>
+        <input type="radio" name="tilan_nimi" value="Koko kahvila" required/>Koko kahvila(100-150 hlö) sis. pitopalvelun<p><em>125e/h</em></p><br>
 
-        <h4><u>Valitse varauksen kesto</u></h4><br>
-        <select class="form-control" id="varausaika" name="varausaika" form="varauslomake">
-            <option value="1">1 tuntia</option>
-            <option value="2">2 tuntia</option>
-            <option value="3">3 tuntia</option>
-            <option value="4">4 tuntia</option>
-            <option value="5">5 tuntia</option>
-            <option value="6">6 tuntia</option>
+        <h4><u>Valitse varauksen kesto *</u></h4><br>
+        <select class="form-control" id="varausaika" name="varausaika" form="varauslomake" required>
+            <option value="1 tunti">1 tunti</option>
+            <option value="2 tuntia">2 tuntia</option>
+            <option value="3 tuntia">3 tuntia</option>
+            <option value="4 tuntia">4 tuntia</option>
+            <option value="5 tuntia">5 tuntia</option>
+            <option value="6 tuntia">6 tuntia</option>
         </select>
         <br>
         <h4><u>Lisätiedot ja toiveet</u></h4><br>
-        <textarea name='lisatiedot' cols='50' rows='5'></textarea><br><br>
+        <textarea name='lisatiedot' placeholder="Muuta huomioitavaa" cols='50' rows='5' ></textarea><br><br>
         
         <button type="submit" class="btn btn-primary btn-sm">VAHVISTA VARAUS</button>
+        <br><br>
+        <p style="font-size: 0.8em;">*- tähdellä merkityt kentät ovat pakollisia</p>
 
     </form>
 

@@ -18,6 +18,7 @@ function poistaVaraus($yhteys, $poistettava) {
 
 $muokattava=isset($_GET["muokattava"]) ? $_GET["muokattava"] : "";
 $poistettava=isset($_GET["poistettava"]) ? $_GET["poistettava"] : "";
+$muokattava=isset($_GET["varaustunnus"]) ? $_GET["varaustunnus"] : "";
 
 //Jos tietoa ei ole annettu, palataan listaukseen
 if (empty($muokattava)){
@@ -25,10 +26,10 @@ if (empty($muokattava)){
     exit;
 }
 
-$sql="select * from ASIAKAS where asiakasID=?";
+$sql="select * from ASIAKAS where varaustunnus=?";
 $stmt=mysqli_prepare($yhteys, $sql);
 //Sijoitetaan muuttuja sql-lauseeseen
-mysqli_stmt_bind_param($stmt, 'i', $muokattava);
+mysqli_stmt_bind_param($stmt, 's', $muokattava);
 //Suoritetaan sql-lause
 mysqli_stmt_execute($stmt);
 //Koska luetaan prepared statementilla, tulos haetaan 
