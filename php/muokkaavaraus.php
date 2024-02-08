@@ -3,7 +3,7 @@ include ("./connect.php");
 
 // Tehdään funktio varauksen poistamiseen
 function poistaVaraus($yhteys, $poistettava) {
-    $sql="DELETE FROM varaukset WHERE id=?";
+    $sql="DELETE FROM varaukset WHERE varaustunnus=?";
     $stmt=mysqli_prepare($yhteys, $sql);
     // Sijoitetaan muuttuja SQL-lauseeseen
     mysqli_stmt_bind_param($stmt,"i", $poistettava);
@@ -35,17 +35,17 @@ mysqli_stmt_execute($stmt);
 //metodilla mysqli_stmt_get_result($stmt);
 $tulos=mysqli_stmt_get_result($stmt);
 if (!$rivi=mysqli_fetch_object($tulos)){
-    header("Location:../pages/tietuettaeiloydy.html");
+    header("Location:../pages/muokkaapoistaeiloydy.html");
     exit;
 }
 ?>
 
 <!-- Lomake tavallisena html-koodina php tagien ulkopuolella -->
 <!-- Lomake sisältää php-osuuksia, joilla tulostetaan syötekenttiin luetun tietueen tiedot -->
-<!-- id-kenttä on readonly, koska sitä ei ole tarkoitus muuttaa -->
+<!-- varaustunnus-kenttä on readonly, koska sitä ei ole tarkoitus muuttaa -->
 
 <form action='./paivita.php' method='post'>
-id:<input type='text' name='id' value='<?php print $rivi->id;?>' readonly><br>
+varaustunnus:<input type='text' name='varaustunnus' value='<?php print $rivi->varaustunnus;?>' readonly><br>
 etunimi:<input type='text' name='etunimi' value='<?php print $rivi->etunimi;?>'><br>
 sukunimi:<input type='text' name='sukunimi' value='<?php print $rivi->sukunimi;?>'><br>
 <input type='submit' name='ok' value='ok'><br>
