@@ -57,7 +57,7 @@ $yhteys->close();
 <body>
     <h2>Syötä varaustunnus varauksen tietojen muokkaamiseksi</h2>
     <form method="post" action="">
-        Varaustunnus: <input type="text" name="varaustunnus"><br><br>
+        Varaustunnus: <input type="text" name="varaustunnus" maxlength="5"><br><br>
         <input type="submit" value="Hae ja muokkaa varauksen tietoja">
     </form>
 </body>
