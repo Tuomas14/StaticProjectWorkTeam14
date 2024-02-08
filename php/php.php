@@ -26,14 +26,18 @@ if(isset($_POST['varaustunnus'])) {
         echo "sukunimi: " . $row['sukunimi'] . "<br>";
         echo "sahkoposti: " . $row['sahkoposti'] . "<br>";
         echo "puhelinnro: " . $row['puhelinnro'] . "<br>";
+        $etunimi = $row['etunimi'];
+        $sukunimi = $row['sukunimi'];
+        $sahkoposti = $row['sahkoposti'];
+        $puhelinnumero = $row['puhelinnro'];
 
         // Lisää lomake muokkaamiseen
         echo '<form method="post" action="muokkaavarausta.php">';
         echo '<input type="hidden" name="varaustunnus" value="' . $varaustunnus . '">';
-        echo 'Uusi etunimi: <input type="text" name="uusi_etunimi"><br>';
-        echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi"><br>';
-        echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti"><br>';
-        echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero"><br>';
+        echo 'Uusi etunimi: <input type="text" name="uusi_etunimi" value="' . $etunimi . '"><br>';
+        echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi" value="' . $sukunimi . '"><br>';
+        echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br>';
+        echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br>';
         echo '<input type="submit" value="Tallenna muutokset">';
         echo '</form>';
     } else {
