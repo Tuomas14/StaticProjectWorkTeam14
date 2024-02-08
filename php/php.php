@@ -10,6 +10,10 @@ if ($yhteys->connect_error) {
 if(isset($_POST['varaustunnus'])) {
     $varaustunnus = $_POST['varaustunnus'];
     
+  // Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
+if(isset($_POST['varaustunnus'])) {
+    $varaustunnus = $_POST['varaustunnus'];
+    
     // Hae varauksen tiedot tietokannasta
     $sql = "SELECT * FROM ASIAKAS WHERE varaustunnus = '$varaustunnus'";
     $result = $yhteys->query($sql);
@@ -22,11 +26,20 @@ if(isset($_POST['varaustunnus'])) {
         echo "sahkoposti: " . $row['sahkoposti'] . "<br>";
         echo "puhelinnro: " . $row['puhelinnro'] . "<br>";
 
-        // Voit lisätä tähän koodin varauksen tietojen muokkaamiseen
+        // Lisää lomake muokkaamiseen
+        echo '<form method="post" action="muokkaavarausta.php">';
+        echo '<input type="hidden" name="varaustunnus" value="' . $varaustunnus . '">';
+        echo 'Uusi etunimi: <input type="text" name="uusi_etunimi"><br>';
+        echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi"><br>';
+        echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti"><br>';
+        echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero"><br>';
+        echo '<input type="submit" value="Tallenna muutokset">';
+        echo '</form>';
     } else {
         echo "Virhe: Varaustunnusta ei löytynyt.";
     }
-}
+}}
+
 $yhteys->close();
 ?>
 
