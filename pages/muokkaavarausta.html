@@ -25,7 +25,17 @@
         <button type="submit" class="btn btn-primary btn-sm">HAE VARAUSTA</button>
         
     </div>     
-
+    
+    <script>
+        function haeVaraus() {
+            var varausTunnus = document.getElementById('varaustunnus').value;
+            fetch('muokkaavaraus.php?muokattava=' + varaustunnus)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('muokkaavaraus').innerHTML = data;
+            });
+        }
+    </script>
     
 </body>
 </html>
