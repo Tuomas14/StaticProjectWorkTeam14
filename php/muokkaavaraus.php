@@ -35,7 +35,7 @@ mysqli_stmt_execute($stmt);
 //metodilla mysqli_stmt_get_result($stmt);
 $tulos=mysqli_stmt_get_result($stmt);
 if (!$rivi=mysqli_fetch_object($tulos)){
-    header("Location:../pages/tietuettaeiloydy.html");
+    header("Location:../pages/muokkaapoistaeiloydy.html");
     exit;
 }
 ?>
