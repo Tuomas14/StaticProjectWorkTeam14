@@ -11,10 +11,6 @@ if ($yhteys->connect_error) {
 if(isset($_POST['varaustunnus'])) {
     $varaustunnus = $_POST['varaustunnus'];
     
-  // Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
-if(isset($_POST['varaustunnus'])) {
-    $varaustunnus = $_POST['varaustunnus'];
-    
     // Hae varauksen tiedot tietokannasta
     $sql = "SELECT ASIAKAS.*, VARAUKSET.varausaika, VARAUKSET.lisatiedot, TILA.tilan_nimi
     FROM ASIAKAS
@@ -69,10 +65,33 @@ if(isset($_POST['varaustunnus'])) {
         echo 'Lisatiedot: <textarea name="uudet_lisatiedot">' . $lisatiedot . '</textarea><br><br>';
         echo '<input type="submit" value="Tallenna muutokset">';
         echo '</form>';
-    } else {
-        echo "Virhe: Varaustunnusta ei löytynyt.";
+
+// Lisätään poistanappi
+echo '<form method="post" action="">';
+echo 'input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
+echo '<input type="submit" name="poista" value="Poista varaus">';
+echo '</form>';
+
+// Jos poista-nappia on painettu
+if (isset($_POST['poista'])) {
+    $poistettava=$_POST['poistettava'];
+
+// Poista varaus tietokannasta
+$sql="DELETE FROM varaukset WHERE varaustunnus=?";
+$stmt=$yhteys->prepare($sql);
+$stmt->bind_param("s",$poistettava);
+
+if ($stmt->execute()) {
+    echo "Varaus on poistettu onnistuneesti!";
+} else {
+    echo "Virhe: Varausta ei voitu poistaa.";
     }
-}}
+}
+
+} else {
+    echo "Virhe: Varaustunnusta ei löytynyt.";
+}
+}
 
 $yhteys->close();
 ?>
