@@ -7,8 +7,8 @@
         die("Yhteys epäonnistui: " . $yhteys->connect_error);
     }
 
-// Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
-if(isset($_POST['varaustunnus'])) {
+    // Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
+    if(isset($_POST['varaustunnus'])) {
     $varaustunnus = $_POST['varaustunnus'];
     
     // Hae varauksen tiedot tietokannasta
@@ -65,30 +65,56 @@ if(isset($_POST['varaustunnus'])) {
         echo 'Lisatiedot: <textarea name="uudet_lisatiedot">' . $lisatiedot . '</textarea><br><br>';
         echo '<input type="submit" value="Tallenna muutokset">';
         echo '</form>';
-    } else {
-        echo "Virhe: Varaustunnusta ei löytynyt.";
+
+         // Lisätään poistanappi
+         echo '<form method="post" action="">'; 
+         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
+         echo '<input type="submit" name="poista" value="Poista varaus">';
+         echo '</form>';
+     } else {
+         echo "Virhe: Varaustunnusta ei löytynyt.";
+     }
+ }
+
+        // Jos poista-nappia on painettu
+    if (isset($_POST['poista'])) {
+        $poistettava=$_POST['poistettava'];
+
+        // Poista TILA-rivi k.o varaustunnukseen liittyen
+    $sql_delete_tila = "DELETE FROM TILA WHERE varaustunnus=?";
+    $stmt_delete_tila = $yhteys->prepare($sql_delete_tila);
+    $stmt_delete_tila->bind_param("s", $poistettava);
+
+    // Suoritetaan poisto
+    $poisto_onnistui = false;
+    if ($stmt_delete_tila->execute()) {
+
+    // Poistetaan VARAUKSET-rivi k.o varaustunnukseen liittyen
+    $sql_delete_varaus = "DELETE FROM VARAUKSET WHERE varaustunnus=?";
+    $stmt_delete_varaus = $yhteys->prepare($sql_delete_varaus);
+    $stmt_delete_varaus->bind_param("s", $poistettava);
+
+    // Suoritetaan poisto
+    if ($stmt_delete_varaus->execute()) {
+
+    // Poistetaan ASIAKAS-rivi k.o varaustunnukseen liittyen
+    $sql_delete_asiakas = "DELETE FROM ASIAKAS WHERE varaustunnus=?";
+    $stmt_delete_asiakas = $yhteys->prepare($sql_delete_asiakas);
+    $stmt_delete_asiakas->bind_param("s", $poistettava);
+    
+
+    // Suoritetaan poisto
+    if ($stmt_delete_asiakas->execute()) {
+        $poisto_onnistui = true;
+        }
     }
 }
 
-// Lisätään poistanappi
-echo '<form method="post" action="">';
-echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
-echo '<input type="submit" name="poista" value="Poista varaus">';
-echo '</form>';
-
-// Jos poista-nappia on painettu
-if (isset($_POST['poista'])) {
-    $poistettava=$_POST['poistettava'];
-
-// Poista varaus tietokannasta
-$sql="DELETE FROM varaukset WHERE varaustunnus=?";
-$stmt=$yhteys->prepare($sql);
-$stmt->bind_param("s",$poistettava);
-
-if ($stmt->execute()) {
-    echo "Varaus on poistettu onnistuneesti!";
-} else {
-    echo "Virhe: Varausta ei voitu poistaa.";
+    // Lähetetään viesti käyttäjälle
+    if ($poisto_onnistui) {
+        echo "Varauksen poistaminen onnistui!";
+    } else {
+        echo "Virhe! Varauksen poistaminen epäonnistui.";
     }
 }
 
