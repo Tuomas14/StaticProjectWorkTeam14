@@ -1,5 +1,6 @@
 <?php
 include ("./connect.php");
+include ("../pages/muokkaavarausta.html");
 
 // Tarkista yhteys
 if ($yhteys->connect_error) {
