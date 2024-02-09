@@ -68,7 +68,7 @@ if(isset($_POST['varaustunnus'])) {
 
 // Lisätään poistanappi
 echo '<form method="post" action="">';
-echo 'input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
+echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
 echo '<input type="submit" name="poista" value="Poista varaus">';
 echo '</form>';
 
