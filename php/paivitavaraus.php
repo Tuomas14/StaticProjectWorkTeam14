@@ -29,6 +29,8 @@ if(isset($_POST['varaustunnus']) && isset($_POST['uusi_etunimi']) && isset($_POS
     } else {
         echo "Virhe päivitettäessä varauksen tietoja: " . $yhteys->error;
     }
-    }
+} else {
+    echo "Virhe: Kaikki kentät on täytettävä ennen päivittämistä!";
+}
     $yhteys->close();
     ?>
