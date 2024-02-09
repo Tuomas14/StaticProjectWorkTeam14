@@ -103,10 +103,16 @@ $yhteys->close();
     <title>Varauksen muokkaus</title>
 </head>
 <body>
-    <h2>Syötä varaustunnus varauksen tietojen muokkaamiseksi</h2>
-    <form method="post" action="">
-        Varaustunnus: <input type="text" name="varaustunnus" maxlength="5"><br><br>
-        <input type="submit" value="Hae ja muokkaa varauksen tietoja">
-    </form>
+    <?php
+    // Tarkista onko varaustunnus jo lähetetty
+    if (!isset($_POST['varaustunnus'])) {
+        // Lomake näkyy vain, jos varaustunnusta ei ole vielä lähetetty
+        echo '<h2>Syötä varaustunnus varauksen tietojen muokkaamiseksi</h2>
+            <form method="post" action="">
+                Varaustunnus: <input type="text" name="varaustunnus" maxlength="5"><br><br>
+                <input type="submit" value="Hae ja muokkaa varauksen tietoja">
+            </form>';
+    }
+    ?>
 </body>
 </html>
