@@ -18,6 +18,10 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
     if ($result->num_rows > 0) {
         // Tulosta varauksen tiedot ja mahdollista muokkaaminen
         $row = $result->fetch_assoc();
+        echo "Etunimi: " . $row['etunimi'] . "<br>"; // Näytetään etunimi
+        echo "Sukunimi: " . $row['sukunimi'] . "<br>";
+        echo "Sahkoposti: " . $row['sahkoposti'] . "<br>";
+        echo "Puhelinnro: " . $row['puhelinnro'] . "<br>";
         $etunimi = $row['etunimi'];
         $sukunimi = $row['sukunimi'];
         $sahkoposti = $row['sahkoposti'];
