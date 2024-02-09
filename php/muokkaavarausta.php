@@ -1,11 +1,11 @@
 <?php
-include ("./connect.php");
-include ("../pages/muokkaavarausta.html");
+    include ("./connect.php");
+    include ("../pages/muokkaavarausta.html");
 
-// Tarkista yhteys
-if ($yhteys->connect_error) {
-    die("Yhteys epäonnistui: " . $yhteys->connect_error);
-}
+    // Tarkista yhteys
+    if ($yhteys->connect_error) {
+        die("Yhteys epäonnistui: " . $yhteys->connect_error);
+    }
 
 // Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
 if(isset($_POST['varaustunnus'])) {
@@ -47,7 +47,7 @@ if(isset($_POST['varaustunnus'])) {
         echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br><br>';
         echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br><br>';
 
-        
+
         echo '<input type="radio" name="uusi_tila" value="Iso kabinetti" ' . ($tilan_nimi == "Iso kabinetti" ? "checked" : "") . ' required/>Iso kabinetti (40-50 hlö) <p><em>75e/h</em></p> <br>';
         echo '<input type="radio" name="uusi_tila" value="Pieni kabinetti" ' . ($tilan_nimi == "Pieni kabinetti" ? "checked" : "") . ' required/>Pieni kabinetti(15-20 hlö) <p><em>40e/h</em></p><br>';
         echo '<input type="radio" name="uusi_tila" value="Koko kahvila" ' . ($tilan_nimi == "Koko kahvila" ? "checked" : "") . ' required/>Koko kahvila(100-150 hlö) sis. pitopalvelun<p><em>125e/h</em></p><br>';
@@ -65,6 +65,10 @@ if(isset($_POST['varaustunnus'])) {
         echo 'Lisatiedot: <textarea name="uudet_lisatiedot">' . $lisatiedot . '</textarea><br><br>';
         echo '<input type="submit" value="Tallenna muutokset">';
         echo '</form>';
+    } else {
+        echo "Virhe: Varaustunnusta ei löytynyt.";
+    }
+}
 
 // Lisätään poistanappi
 echo '<form method="post" action="">';
@@ -86,11 +90,6 @@ if ($stmt->execute()) {
 } else {
     echo "Virhe: Varausta ei voitu poistaa.";
     }
-}
-
-} else {
-    echo "Virhe: Varaustunnusta ei löytynyt.";
-}
 }
 
 $yhteys->close();

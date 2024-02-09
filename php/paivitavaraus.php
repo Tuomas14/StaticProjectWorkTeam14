@@ -17,19 +17,18 @@ if(isset($_POST['varaustunnus']) && isset($_POST['uusi_etunimi']) && isset($_POS
     $uusi_varausaika = $_POST['uusi_varausaika'];
     $uudet_lisatiedot = $_POST['uudet_lisatiedot'];
 
-    // Päivitä varauksen tiedot tietokantaan
-    $sql = "UPDATE ASIAKAS SET etunimi = '$uusi_etunimi', sukunimi = '$uusi_sukunimi', sahkoposti = '$uusi_sahkoposti', puhelinnro = '$uusi_puhelinnumero' WHERE varaustunnus = '$varaustunnus'; ";
-    $sql .= "UPDATE VARAUKSET SET varausaika = '$uusi_varausaika', lisatiedot = '$uudet_lisatiedot' WHERE varaustunnus = '$varaustunnus'; ";
-    $sql .= "UPDATE TILA SET tilan_nimi = '$uusi_tila' WHERE varaustunnus = '$varaustunnus'; ";
 
-    if ($yhteys->multi_query($sql) === TRUE) {
+    // Päivitä varauksen tiedot tietokantaan
+    $sql1 = "UPDATE ASIAKAS SET etunimi = '$uusi_etunimi', sukunimi = '$uusi_sukunimi', sahkoposti = '$uusi_sahkoposti', puhelinnro = '$uusi_puhelinnumero' WHERE varaustunnus = '$varaustunnus';";
+    $sql2 = "UPDATE VARAUKSET SET varausaika = '$uusi_varausaika', lisatiedot = '$uudet_lisatiedot' WHERE varaustunnus = '$varaustunnus';";
+    $sql3 = "UPDATE TILA SET tilan_nimi = '$uusi_tila' WHERE varaustunnus = '$varaustunnus';";
+
+    // Suorita jokainen päivityslause erikseen
+    if ($yhteys->query($sql1) === TRUE && $yhteys->query($sql2) === TRUE && $yhteys->query($sql3) === TRUE) {
         echo "Varauksen tiedot päivitetty onnistuneesti!";
     } else {
         echo "Virhe päivitettäessä varauksen tietoja: " . $yhteys->error;
     }
-
     }
-
-
     $yhteys->close();
     ?>
