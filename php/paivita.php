@@ -15,16 +15,16 @@ if(isset($_POST['varaustunnus'], $_POST['uusi_etunimi'], $_POST['uusi_sukunimi']
     $uusi_sahkoposti = $_POST['uusi_sahkoposti'];
     $uusi_puhelinnumero = $_POST['uusi_puhelinnumero'];
     
-    // Päivitä varauksen tiedot tietokantaan
-    $sql = "UPDATE ASIAKAS SET etunimi = '$uusi_etunimi', sukunimi = '$uusi_sukunimi', sahkoposti = '$uusi_sahkoposti', puhelinnro = '$uusi_puhelinnumero' WHERE varaustunnus = '$varaustunnus'";
-    if ($yhteys->query($sql) === TRUE) {
-        echo "Varauksen tiedot päivitetty onnistuneesti!";
-    } else {
-        echo "Virhe päivitettäessä varauksen tietoja: " . $yhteys->error;
-    }
+// Päivitä varauksen tiedot tietokantaan
+$sql = "UPDATE ASIAKAS SET etunimi = '$uusi_etunimi', sukunimi = '$uusi_sukunimi', sahkoposti = '$uusi_sahkoposti', puhelinnro = '$uusi_puhelinnumero' WHERE varaustunnus = '$varaustunnus'";
+if ($yhteys->query($sql) === TRUE) {
+    header("Location: ../pages/muokkausonnistui.html");
+    exit();
 } else {
-    echo "Virhe: Kaikki kentät on täytettävä ennen päivittämistä!";
-}
+    echo "Virhe päivitettäessä varauksen tietoja: " . $yhteys->error;
+}}
 
+// Sulje tietokantayhteys
 $yhteys->close();
+
 ?>

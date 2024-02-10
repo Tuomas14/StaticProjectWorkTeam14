@@ -1,15 +1,15 @@
 <?php
-    include ("./connect.php");
-    include ("../pages/muokkaavarausta.html");
+include ("./connect.php");
+include ("../pages/muokkaavarausta.html");
 
-    // Tarkista yhteys
-    if ($yhteys->connect_error) {
-        die("Yhteys epäonnistui: " . $yhteys->connect_error);
-    }
+// Tarkista yhteys
+if ($yhteys->connect_error) {
+    die("Yhteys epäonnistui: " . $yhteys->connect_error);
+}
 
-    // Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
-    if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
-        $varaustunnus = $_POST['varaustunnus'];
+// Tarkista onko käyttäjä lähettänyt varaustunnuksen lomakkeella
+if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
+    $varaustunnus = $_POST['varaustunnus'];
     
     // Hae varauksen tiedot tietokannasta
     $sql = "SELECT ASIAKAS.*, VARAUKSET.varausaika, VARAUKSET.lisatiedot, TILA.tilan_nimi
@@ -17,8 +17,13 @@
     INNER JOIN VARAUKSET ON ASIAKAS.varaustunnus = VARAUKSET.varaustunnus
     INNER JOIN TILA ON VARAUKSET.varaustunnus = TILA.varaustunnus
     WHERE ASIAKAS.varaustunnus = '$varaustunnus'";
-
     $result = $yhteys->query($sql);
+
+    // Lisää virheenkäsittely jokaiseen tietokantakyselyyn
+    $result = $yhteys->query($sql);
+    if (!$result) {
+        die("Virhe tietokantakyselyssä: " . $yhteys->error);
+    }
 
     if ($result->num_rows > 0) {
         // Tulosta varauksen tiedot ja mahdollista muokkaaminen
@@ -37,16 +42,14 @@
         $tilan_nimi = $row['tilan_nimi'];
         $varausaika = $row['varausaika'];
         $lisatiedot = $row['lisatiedot'];
-        
 
         // Lisää lomake muokkaamiseen
-        echo '<form method="post" action="paivitavaraus.php">';
+        echo '<form method="post" action="paivitaturha.php">';
         echo 'Varaustunnus: <input type="text" name="varaustunnus" readonly value=" ' . $varaustunnus . '"><br><br>';
         echo 'Uusi etunimi: <input type="text" name="uusi_etunimi" value="' . $etunimi . '"><br><br>';
         echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi" value="' . $sukunimi . '"><br><br>';
         echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br><br>';
         echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br><br>';
-
 
         echo '<input type="radio" name="uusi_tila" value="Iso kabinetti" ' . ($tilan_nimi == "Iso kabinetti" ? "checked" : "") . ' required/>Iso kabinetti (40-50 hlö) <p><em>75e/h</em></p> <br>';
         echo '<input type="radio" name="uusi_tila" value="Pieni kabinetti" ' . ($tilan_nimi == "Pieni kabinetti" ? "checked" : "") . ' required/>Pieni kabinetti(15-20 hlö) <p><em>40e/h</em></p><br>';

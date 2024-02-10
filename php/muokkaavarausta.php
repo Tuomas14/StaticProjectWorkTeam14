@@ -35,77 +35,32 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br>';
         echo '<input type="submit" value="Tallenna muutokset">';
         echo '</form>';
-   
-    // Lisätään poistanappi
-    echo '<form method="post" action="">'; 
-    echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
-    echo '<input type="submit" name="poista" value="Poista varaus">';
-    echo '</form>';
-} else {
-    echo "Virhe: Varaustunnusta ei löytynyt.";
 
-}  }       // Jos poista-nappia on painettu
-if (isset($_POST['poista'])) {
-    $poistettava=$_POST['poistettava'];
-
-    // Poista TILA-rivi k.o varaustunnukseen liittyen
-$sql_delete_tila = "DELETE FROM TILA WHERE varaustunnus=?";
-$stmt_delete_tila = $yhteys->prepare($sql_delete_tila);
-$stmt_delete_tila->bind_param("s", $poistettava);
-
-// Suoritetaan poisto
-$poisto_onnistui = false;
-if ($stmt_delete_tila->execute()) {
-
-// Poistetaan VARAUKSET-rivi k.o varaustunnukseen liittyen
-$sql_delete_varaus = "DELETE FROM VARAUKSET WHERE varaustunnus=?";
-$stmt_delete_varaus = $yhteys->prepare($sql_delete_varaus);
-$stmt_delete_varaus->bind_param("s", $poistettava);
-
-// Suoritetaan poisto
-if ($stmt_delete_varaus->execute()) {
-
-// Poistetaan ASIAKAS-rivi k.o varaustunnukseen liittyen
-$sql_delete_asiakas = "DELETE FROM ASIAKAS WHERE varaustunnus=?";
-$stmt_delete_asiakas = $yhteys->prepare($sql_delete_asiakas);
-$stmt_delete_asiakas->bind_param("s", $poistettava);
-
-
-// Suoritetaan poisto
-if ($stmt_delete_asiakas->execute()) {
-    $poisto_onnistui = true;
-    }
-}
-}
-
-// Lähetetään viesti käyttäjälle
-if ($poisto_onnistui) {
-    echo "Varauksen poistaminen onnistui!";
-} else {
-    echo "Virhe! Varauksen poistaminen epäonnistui.";
-}
-}
-
-$yhteys->close();
-?>
-
-<!-- HTML-lomake varauksen tietojen hakemiseen -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Varauksen muokkaus</title>
-</head>
-<body>
-    <?php
-    // Tarkista onko varaustunnus jo lähetetty
-    if (!isset($_POST['varaustunnus'])) {
-        // Lomake näkyy vain, jos varaustunnusta ei ole vielä lähetetty
-        echo '<h2>Syötä varaustunnus varauksen tietojen muokkaamiseksi</h2>
-            <form method="post" action="">
-                Varaustunnus: <input type="text" name="varaustunnus" maxlength="5"><br><br>
-                <input type="submit" value="Hae ja muokkaa varauksen tietoja">
-            </form>';
-    }
+        // Lisätään poistanappi
+        echo '<form method="post" action="poistavaraus.php">'; 
+        echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
+        echo '<input type="submit" name="poista" value="Poista varaus">';
+        echo '</form>';
+    }}
     ?>
-</body>
-</html>
+
+    <!-- HTML-lomake varauksen tietojen hakemiseen -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Varauksen muokkaus</title>
+    </head>
+    <body>
+        <?php
+        // Tarkista onko varaustunnus jo lähetetty
+        if (!isset($_POST['varaustunnus'])) {
+            // Lomake näkyy vain, jos varaustunnusta ei ole vielä lähetetty
+            echo '<h2>Syötä varaustunnus varauksen tietojen muokkaamiseksi</h2>
+                <form method="post" action="">
+                    Varaustunnus: <input type="text" name="varaustunnus" maxlength="5"><br><br>
+                    <input type="submit" value="Hae ja muokkaa varauksen tietoja">
+                </form>';
+        }
+        ?>
+    </body>
+    </html>
