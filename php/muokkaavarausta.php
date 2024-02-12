@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Varauksen muokkaus</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/styles.aapo.css">
+    <link rel="stylesheet" href="../css/styles.jani.css">
+    <link rel="stylesheet" href="../css/styles-tuomas.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <!-- Bootstrap linkki -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
 <?php
 include ("./connect.php");
 include ("../pages/muokkaavarausta.html");
@@ -18,22 +31,25 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
     if ($result->num_rows > 0) {
         // Tulosta varauksen tiedot ja mahdollista muokkaaminen
         $row = $result->fetch_assoc();
-        echo "Etunimi: " . $row['etunimi'] . "<br>"; // Näytetään etunimi
+        echo '<div class="paateksti">';
+        echo "<em><u>Varauksen tiedot</u></em>" . "<br>";
+        echo "Etunimi: " . $row['etunimi'] . "<br>";
         echo "Sukunimi: " . $row['sukunimi'] . "<br>";
         echo "Sahkoposti: " . $row['sahkoposti'] . "<br>";
-        echo "Puhelinnro: " . $row['puhelinnro'] . "<br>";
+        echo "Puhelinnro: " . $row['puhelinnro'] . "<br><br>";
         $etunimi = $row['etunimi'];
         $sukunimi = $row['sukunimi'];
         $sahkoposti = $row['sahkoposti'];
         $puhelinnumero = $row['puhelinnro'];
 
+        echo "<em><u>Muokkaa tietojasi</u></em>". "<br>";
         echo '<form method="post" action="paivita.php">';
         echo '<input type="hidden" name="varaustunnus" value="' . $varaustunnus . '">';
-        echo 'Uusi etunimi: <input type="text" name="uusi_etunimi" value="' . $etunimi . '"><br>';
-        echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi" value="' . $sukunimi . '"><br>';
-        echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br>';
-        echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br>';
-        echo '<input type="submit" value="Tallenna muutokset">';
+        echo 'Uusi etunimi: <input type="text" name="uusi_etunimi" value="' . $etunimi . '"><br><br>';
+        echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi" value="' . $sukunimi . '"><br><br>';
+        echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br><br>';
+        echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br><br>';
+        echo '<input type="submit" value="Tallenna muutokset">'."<br><br>";
         echo '</form>';
 
         // Lisätään poistanappi
@@ -41,26 +57,24 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
         echo '<input type="submit" name="poista" value="Poista varaus">';
         echo '</form>';
-    }}
-    ?>
-
-    <!-- HTML-lomake varauksen tietojen hakemiseen -->
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Varauksen muokkaus</title>
-    </head>
-    <body>
-        <?php
+        echo '</div>';
+    } else {
+        echo '<div class="paateksti">';
+        echo "VIRHE!"."<br><br>";
+        echo "Varaustunnusta ei löytynyt. "."<br><br>";
+        echo "<a href='../php/muokkaavarausta.php'>TAKAISIN</a>";
+        echo '</div>';
+    }
+}
         // Tarkista onko varaustunnus jo lähetetty
         if (!isset($_POST['varaustunnus'])) {
             // Lomake näkyy vain, jos varaustunnusta ei ole vielä lähetetty
-            echo '<h2>Syötä varaustunnus varauksen tietojen muokkaamiseksi</h2>
+            echo '<div class="paateksti">';
+            echo '<h2>Syötä varaustunnus</h2><br>
                 <form method="post" action="">
                     Varaustunnus: <input type="text" name="varaustunnus" maxlength="5"><br><br>
                     <input type="submit" value="Hae ja muokkaa varauksen tietoja">
                 </form>';
+            echo '</div>';
         }
-        ?>
-    </body>
-    </html>
+    ?>

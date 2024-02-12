@@ -12,6 +12,22 @@ include ("./connect.php");
     $varausaika = isset($_POST["varausaika"]) ? $_POST["varausaika"] : "";
     $lisatiedot = isset($_POST["lisatiedot"]) ? $_POST["lisatiedot"] : "";
 
+
+    // Tarkistetaan, onko kyseiselle päivämäärälle ja tilalle jo olemassa varaus
+    $sql_check_booking = "SELECT * FROM VARAUKSET WHERE varauspvm = ? AND EXISTS (SELECT * FROM TILA WHERE tilan_nimi = ?)";
+    $stmt_check_booking = mysqli_prepare($yhteys, $sql_check_booking);
+    mysqli_stmt_bind_param($stmt_check_booking, 'ss', $varauspvm, $tilan_nimi);
+    mysqli_stmt_execute($stmt_check_booking);
+    $result_check_booking = mysqli_stmt_get_result($stmt_check_booking);
+
+    if(mysqli_num_rows($result_check_booking) > 0) {
+        // Päällekkäinen varaus löytyi, ohjataan käyttäjä takaisin varauslomakkeeseen
+        header("Location: ../pages/varausjoolemassa.html");
+        exit;
+    }
+
+
+
     if (empty($varauspvm) || empty($etunimi) || empty($sukunimi)|| empty($sahkoposti)|| empty($puhelinnro)|| empty($tilan_nimi)|| empty($varausaika)){
         header("Location:../pages/tietuettaeiloydy.html");
         exit;
