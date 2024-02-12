@@ -1,11 +1,11 @@
 <?php
 include("./connect.php");
 
-// Tarkista, onko varaustunnus asetettu ja ei ole tyhjä
+// Tarkistetaan, onko varaustunnus asetettu ja ei ole tyhjä
 if(isset($_POST['poistettava']) && !empty($_POST['poistettava'])) {
     $poistettava = $_POST['poistettava'];
 
-    // Poista TILA-rivi k.o varaustunnukseen liittyen
+    // Poistetaan TILA-rivi k.o varaustunnukseen liittyen
     $sql_delete_tila = "DELETE FROM TILA WHERE varaustunnus=?";
     $stmt_delete_tila = $yhteys->prepare($sql_delete_tila);
     $stmt_delete_tila->bind_param("s", $poistettava);
