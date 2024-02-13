@@ -3,7 +3,7 @@ include ("./connect.php");
 
 // Tarkista yhteys
 if ($yhteys->connect_error) {
-    die("Yhteys epäonnistui: " . $yhteys->connect_error);
+    exit("Yhteys epäonnistui: " . $yhteys->connect_error);
 }
 
 // Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty
