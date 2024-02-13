@@ -53,6 +53,7 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br><br>';
         echo '<input type="submit" value="Tallenna muutokset">'."<br><br>";
         echo '</form>';
+
         // Lisätään poistanappi
         echo '<form method="post" action="poistavaraus.php">'; 
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
@@ -74,8 +75,8 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo "Varaustunnusta ei löytynyt. "."<br><br>";
         echo "<a href='../php/muokkaavarausta.php'>TAKAISIN</a>";
         echo '</div>';
+        }
     }
-}
         // Tarkista onko varaustunnus jo lähetetty
         if (!isset($_POST['varaustunnus'])) {
             // Lomake näkyy vain, jos varaustunnusta ei ole vielä lähetetty
