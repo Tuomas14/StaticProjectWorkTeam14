@@ -6,6 +6,7 @@
     <title>Kahvila FORE - Tilavaraus</title>
     <meta name="author" content="Team14 | Projekti">
     <meta name="description" content="Kahvilan tilavarauslomake">
+    <!-- CSS-tiedostojen linkitys -->
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/styles.aapo.css">
     <link rel="stylesheet" href="../css/styles.jani.css">
@@ -13,20 +14,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
      <!-- Bootstrap linkki -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
+<!-- Aloitin lisäämällä nav-barin sivuston tyylin mukaiseksi, ja loin sille luokan minkä tyylit määrittelin CSS tiedostossa -->
 <nav class="varaus">
 
 <h1>Tilavaraus | Kahvila FORE </h1>    
 
 </nav>
 
+<!-- Tein formia varten oman div sarakkeen mille määritin oman ID:n CSS tyylityksiä varten -->
 <div id="Varaustiedot">
-
+<!-- Form pohja asiakkaan tietoja varten joka käy läpi tallenna.php tiedostossa olevan koodin -->
+<!-- Käytin enctypeä "application/x-www-form-urlencoded" koska emme lähetä mitään tiedostoja lomakkeellamme  -->
     <form id='varauslomake' action="../php/tallenna.php" method="post" enctype="application/x-www-form-urlencoded">
 
+
+<!-- Päivämäärän valitsemiseen valitsin date-tyypin inputin sillä emme tarvitse kellonaikaa varaukseemme -->
+<!-- "required" attribuutti varmistaa että lomaketta ei lähetetä jos sillä merkittyjä sarakkeita ei ole täytetty -->
         <h4><u>Valitse varauksen ajankohta</u></h4><br>
         Päivämäärä: * <input type="date" name="varauspvm" required/> <br><br>
 
@@ -38,11 +44,13 @@
         Puhelin: * <input type="text" name="puhelinnro" value="" placeholder="+358, 040, 044..." size="30" maxlength="15" required/> <br><br>
         <br><br>
 
+        <!-- Tässä valitsin inputiksi radio sillä se näytti selkeältä kun vaihtoehtoja on vain kolme -->
         <h4><u>Valitse varattava tila *</u></h4><br>
         <input type="radio" name="tilan_nimi" value="Iso kabinetti" required/>Iso kabinetti (40-50 hlö) <p><em>75e/h</em></p> <br>
         <input type="radio" name="tilan_nimi" value="Pieni kabinetti" required/>Pieni kabinetti(15-20 hlö) <p><em>40e/h</em></p><br>
         <input type="radio" name="tilan_nimi" value="Koko kahvila" required/>Koko kahvila(100-150 hlö) sis. pitopalvelun<p><em>125e/h</em></p><br>
 
+        <!-- select taas toimi tässä paremmin, kun vaihtoehtoja on enemmän -->
         <h4><u>Valitse varauksen kesto *</u></h4><br>
         <select class="form-control" id="varausaika" name="varausaika" form="varauslomake" required>
             <option value="1 tunti">1 tunti</option>
@@ -57,6 +65,7 @@
         <h4><u>Lisätiedot ja toiveet</u></h4><br>
         <textarea name='lisatiedot' placeholder="Muuta huomioitavaa" cols='50' rows='5' ></textarea><br><br>
         
+        <!-- class hakee bootstrapilta erilaisen painikkeen ulkonäön -->
         <button type="submit" class="btn btn-primary btn-sm">VAHVISTA VARAUS</button>
         <br><br>
         <p style="font-size: 0.8em;">*- tähdellä merkityt kentät ovat pakollisia</p>
