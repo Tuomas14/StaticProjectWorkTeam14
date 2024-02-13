@@ -6,9 +6,10 @@ if ($yhteys->connect_error) {
     exit("Yhteys epäonnistui: " . $yhteys->connect_error);
 }
 
-// Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty
+// Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty jos näin on palautetaan true ja koodia jatketaan eteenpäin
 if(isset($_POST['varaustunnus'], $_POST['uusi_etunimi'], $_POST['uusi_sukunimi'], $_POST['uusi_sahkoposti'], $_POST['uusi_puhelinnumero']) &&
    !empty($_POST['varaustunnus']) && !empty($_POST['uusi_etunimi']) && !empty($_POST['uusi_sukunimi']) && !empty($_POST['uusi_sahkoposti']) && !empty($_POST['uusi_puhelinnumero'])) {
+    // Nämä rivit tallentavat lomakkeelta lähetetyn tiedon tietokantaan
     $varaustunnus = $_POST['varaustunnus'];
     $uusi_etunimi = $_POST['uusi_etunimi'];
     $uusi_sukunimi = $_POST['uusi_sukunimi'];
@@ -17,6 +18,8 @@ if(isset($_POST['varaustunnus'], $_POST['uusi_etunimi'], $_POST['uusi_sukunimi']
     
 // Päivitä varauksen tiedot tietokantaan
 $sql = "UPDATE ASIAKAS SET etunimi = '$uusi_etunimi', sukunimi = '$uusi_sukunimi', sahkoposti = '$uusi_sahkoposti', puhelinnro = '$uusi_puhelinnumero' WHERE varaustunnus = '$varaustunnus'";
+// Tämä suorittaa tietokantakyselyn, jonka koodi on tallennettu muuttujaan $sql. Tämä kysely suoritetaan käyttäen $yhteys-muuttujaa.
+// Jos se onnistuu palautetaan true
 if ($yhteys->query($sql) === TRUE) {
     header("Location: ../pages/muokkausonnistui.html");
     exit();

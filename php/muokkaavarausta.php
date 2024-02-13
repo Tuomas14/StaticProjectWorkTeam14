@@ -61,7 +61,7 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         // Lomake lähetetään POST-tyyppinä paivita.php tiedostolle, joten käyttäjän syöttämät tiedot eivät näy suoraan URL:ssä
         echo "<em><u>Muokkaa tietojasi</u></em>". "<br>";
         echo '<form method="post" action="paivita.php">';
-        echo 'Varaustunnuksesi: <input type="hidden" name="varaustunnus" value="' . $varaustunnus . '"><br><br>';
+        echo '<input type="hidden" name="varaustunnus" value="' . $varaustunnus . '">';
         echo 'Uusi etunimi: <input type="text" name="uusi_etunimi" value="' . $etunimi . '"><br><br>';
         echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi" value="' . $sukunimi . '"><br><br>';
         echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br><br>';
