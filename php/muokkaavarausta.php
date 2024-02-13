@@ -11,9 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
+<nav class="varaus">
+        <h1> Hallinnoi varausta | Kahvila FORE </h1> 
+</nav>
 <?php
 include ("./connect.php");
-include ("../pages/muokkaavarausta.html");
 
 // Tarkista yhteys
 if ($yhteys->connect_error) {
@@ -55,9 +57,16 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         // Lisätään poistanappi
         echo '<form method="post" action="poistavaraus.php">'; 
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
-        echo '<input type="submit" name="poista" value="Poista varaus">';
+        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
+        echo '<input type="submit" name="poista" value="Poista varaus" onclick="return confirmDelete()">';
         echo '</form>';
         echo '</div>';
+        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
+        echo '<script>';
+        echo 'function confirmDelete() {';
+        echo 'return confirm("Haluatko varmasti poistaa varauksen?")';
+        echo '}';
+        echo '</script>';
     } else {
         echo '<div class="paateksti">';
         echo "VIRHE!"."<br><br>";
@@ -78,3 +87,4 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
             echo '</div>';
         }
     ?>
+</body>
