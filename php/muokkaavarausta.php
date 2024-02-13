@@ -53,13 +53,14 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo 'Uusi puhelinnumero: <input type="text" name="uusi_puhelinnumero" value="' . $puhelinnumero . '"><br><br>';
         echo '<input type="submit" value="Tallenna muutokset">'."<br><br>";
         echo '</form>';
-
         // Lisätään poistanappi
         echo '<form method="post" action="poistavaraus.php">'; 
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
         // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
         echo '<input type="submit" name="poista" value="Poista varaus" onclick="return confirmDelete()">';
-        echo '</form>';
+        echo '</form>' . "<br>";
+        echo "<em><u>Jos haluat muokata tarkempia tietojasi ota yhteyttä!</u></em>". "<br>";
+        echo "Fore@kahvila.fi "."<br><br>";
         echo '</div>';
         // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
         echo '<script>';
