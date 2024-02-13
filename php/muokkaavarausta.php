@@ -17,36 +17,50 @@
 <?php
 include ("./connect.php");
 
-// Tarkista yhteys
+// Tarkista yhteys tietokantaan
 if ($yhteys->connect_error) {
-    die("Yhteys epäonnistui: " . $yhteys->connect_error);
+    // exit katkaisee yhteyden tietokantaan ja tulostaa tiedon käyttäjälle
+    exit("Yhteys epäonnistui: " . $yhteys->connect_error);
 }
 
 // Tarkista, onko lomakkeen tiedot lähetetty
+// isset tarkistaa onko varaustunnus asetettu, jos se on asetettu palautetaan true muutoin false
+// !empty tarkastaa jos avain on asetettu ja sen arvo ei ole tyhjä, tämä ehto palauttaa true, muuten false.
 if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
+// Jos molemmat näistä ehdoista ovat (true), silloin suoritetaan seuraava rivi:
+// Tässä luodaan muuttuja nimeltä $varaustunnus asetetaan siihen 'varaustunnus' avaimen arvo, joka on lähetetty POST-pyynnön mukana.
+// Tämä mahdollistaa sen, että tämän muuttujan avulla voidaan käsitellä ja käyttää POST-pyynnössä mukana lähetettyä varaustunnusta jatkossa koodissa.
     $varaustunnus = $_POST['varaustunnus'];
     
     // Hae varauksen tiedot tietokannasta
     $sql = "SELECT * FROM ASIAKAS WHERE varaustunnus = '$varaustunnus'";
     $result = $yhteys->query($sql);
 
+// Tarkistetaan onko tietokannasta saatujen hakutulosten määrä suurempi kuin nolla, jotta voidaan suorittaa jatkotoimenpiteet.    
     if ($result->num_rows > 0) {
         // Tulosta varauksen tiedot ja mahdollista muokkaaminen
+        // Metodi fetch_assoc() hakee tietokannasta yksi rivi kerrallaan hakutuloksia ($result) ja palauttaa tiedon
+        // jossa avaimet ovat tietokannan sarakkeiden nimet ja arvot ovat vastaavat rivin arvot
         $row = $result->fetch_assoc();
         echo '<div class="paateksti">';
         echo "<em><u>Varauksen tiedot</u></em>" . "<br>";
+        // hakee tietokannasta halutun tiedon joka sijaitsee $row assosiatiivisessa taulukossa
         echo "Etunimi: " . $row['etunimi'] . "<br>";
         echo "Sukunimi: " . $row['sukunimi'] . "<br>";
         echo "Sahkoposti: " . $row['sahkoposti'] . "<br>";
         echo "Puhelinnro: " . $row['puhelinnro'] . "<br><br>";
+        // tallennetaan arvot uusiksi muuttujiksi jotta niitä voidaan käyttää myöhemmin
         $etunimi = $row['etunimi'];
         $sukunimi = $row['sukunimi'];
         $sahkoposti = $row['sahkoposti'];
         $puhelinnumero = $row['puhelinnro'];
 
+        // Tässä luodaan formi jossa käyttäjä voi muokata tietoja
+        // Käyttäjälle näytetään varaustunnus, mutta se on vain lukemiseen
+        // Lomake lähetetään POST-tyyppinä paivita.php tiedostolle, joten käyttäjän syöttämät tiedot eivät näy suoraan URL:ssä
         echo "<em><u>Muokkaa tietojasi</u></em>". "<br>";
         echo '<form method="post" action="paivita.php">';
-        echo '<input type="hidden" name="varaustunnus" value="' . $varaustunnus . '">';
+        echo 'Varaustunnuksesi: <input type="text" name="varaustunnus" value="' . $varaustunnus . '"readonly><br><br>';
         echo 'Uusi etunimi: <input type="text" name="uusi_etunimi" value="' . $etunimi . '"><br><br>';
         echo 'Uusi sukunimi: <input type="text" name="uusi_sukunimi" value="' . $sukunimi . '"><br><br>';
         echo 'Uusi sähköposti: <input type="text" name="uusi_sahkoposti" value="' . $sahkoposti . '"><br><br>';
