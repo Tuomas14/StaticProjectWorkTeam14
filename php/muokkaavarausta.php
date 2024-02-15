@@ -17,31 +17,23 @@
 <?php
 include ("./connect.php");
 
-// Tarkista yhteys tietokantaan
-if ($yhteys->connect_error) {
-    // exit katkaisee yhteyden tietokantaan ja tulostaa tiedon käyttäjälle
-    exit("Yhteys epäonnistui: " . $yhteys->connect_error);
-}
-
-// Tarkista, onko lomakkeen tiedot lähetetty
-// isset tarkistaa onko varaustunnus asetettu, jos se on asetettu palautetaan true muutoin false
-// !empty tarkastaa jos avain on asetettu ja sen arvo ei ole tyhjä, tämä ehto palauttaa true, muuten false.
 if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
-// Jos molemmat näistä ehdoista ovat (true), silloin suoritetaan seuraava rivi:
-// Tässä luodaan muuttuja nimeltä $varaustunnus asetetaan siihen 'varaustunnus' avaimen arvo, joka on lähetetty POST-pyynnön mukana.
-// Tämä mahdollistaa sen, että tämän muuttujan avulla voidaan käsitellä ja käyttää POST-pyynnössä mukana lähetettyä varaustunnusta jatkossa koodissa.
+    // Valmistellaan kysely
     $varaustunnus = $_POST['varaustunnus'];
-    
-    // Hae varauksen tiedot tietokannasta
-    $sql = "SELECT * FROM ASIAKAS WHERE varaustunnus = '$varaustunnus'";
-    $result = $yhteys->query($sql);
-
-// Tarkistetaan onko tietokannasta saatujen hakutulosten määrä suurempi kuin nolla, jotta voidaan suorittaa jatkotoimenpiteet.    
-    if ($result->num_rows > 0) {
-        // Tulosta varauksen tiedot ja mahdollista muokkaaminen
-        // Metodi fetch_assoc() hakee tietokannasta yksi rivi kerrallaan hakutuloksia ($result) ja palauttaa tiedon
-        // jossa avaimet ovat tietokannan sarakkeiden nimet ja arvot ovat vastaavat rivin arvot
-        $row = $result->fetch_assoc();
+    $sql = "SELECT * FROM ASIAKAS WHERE varaustunnus = ?";
+    // Valmistellaan lauseke
+    $stmt = $yhteys->prepare($sql);
+    // Tarkistetaan, että valmistelu onnistui ennen suoritusta
+    if ($stmt) {
+        // Liitetään parametri ja suoritetaan kysely
+        $stmt->bind_param('i', $varaustunnus);
+        $stmt->execute();
+        // Haetaan tulos
+        $result = $stmt->get_result();
+        // Tarkistetaan onko rivejä
+        if ($result->num_rows > 0) {
+            // Tulosta varauksen tiedot ja mahdollista muokkaaminen
+            $row = $result->fetch_assoc();
         echo '<div class="paateksti">';
         echo "<em><u>Varauksen tiedot</u></em>" . "<br>";
         // hakee tietokannasta halutun tiedon joka sijaitsee $row assosiatiivisessa taulukossa
@@ -69,20 +61,18 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo '<input type="submit" value="Tallenna muutokset">'."<br><br>";
         echo '</form>';
 
-        // Lisätään poistamiselle oma form lomake joka ohjataan poistavaraus.php tiedostolle
-        // Lisätään "hidden" painike mikä käyttää php tiedoston muuttujaa $poistettava
+        // Lisätään poistanappi
         echo '<form method="post" action="poistavaraus.php">'; 
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
-        // Lisätään poista näppäin mitä painettaessa toteuttaa allaolevan javascript funktion "vahvistaPoisto"
-        echo '<input type="submit" name="poista" value="Poista varaus" onclick="return vahvistaPoisto()">';
+        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
+        echo '<input type="submit" name="poista" value="Poista varaus" onclick="return confirmDelete()">';
         echo '</form>' . "<br>";
-        // Lisätiedot muiden tietojen muokkaamista varten
         echo "<em><u>Jos haluat muokata tarkempia tietojasi ota yhteyttä!</u></em>". "<br>";
         echo "Fore@kahvila.fi "."<br><br>";
         echo '</div>';
-        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi poista nappia painettaessa
+        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
         echo '<script>';
-        echo 'function vahvistaPoisto() {';
+        echo 'function confirmDelete() {';
         echo 'return confirm("Haluatko varmasti poistaa varauksen?")';
         echo '}';
         echo '</script>';
@@ -94,6 +84,10 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo '</div>';
         }
     }
+    // Suljetaan valmisteltu lauseke
+    $stmt->close();
+} 
+
         // Tarkista onko varaustunnus jo lähetetty
         if (!isset($_POST['varaustunnus'])) {
             // Lomake näkyy vain, jos varaustunnusta ei ole vielä lähetetty

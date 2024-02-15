@@ -1,33 +1,45 @@
 <?php
-include ("./connect.php");
+include("./connect.php");
 
 // Tarkista yhteys
 if ($yhteys->connect_error) {
-    exit("Yhteys epäonnistui: " . $yhteys->connect_error);
+    header("Location: ../pages/yhteysvirhe.html");
+    exit;
 }
 
-// Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty jos näin on palautetaan true ja koodia jatketaan eteenpäin
-if(isset($_POST['varaustunnus'], $_POST['uusi_etunimi'], $_POST['uusi_sukunimi'], $_POST['uusi_sahkoposti'], $_POST['uusi_puhelinnumero']) &&
-   !empty($_POST['varaustunnus']) && !empty($_POST['uusi_etunimi']) && !empty($_POST['uusi_sukunimi']) && !empty($_POST['uusi_sahkoposti']) && !empty($_POST['uusi_puhelinnumero'])) {
+// Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty
+if (
+    isset($_POST['varaustunnus'], $_POST['uusi_etunimi'], $_POST['uusi_sukunimi'], $_POST['uusi_sahkoposti'], $_POST['uusi_puhelinnumero']) &&
+    !empty($_POST['varaustunnus']) && !empty($_POST['uusi_etunimi']) && !empty($_POST['uusi_sukunimi']) && !empty($_POST['uusi_sahkoposti']) && !empty($_POST['uusi_puhelinnumero'])
+) {
     // Nämä rivit tallentavat lomakkeelta lähetetyn tiedon tietokantaan
     $varaustunnus = $_POST['varaustunnus'];
     $uusi_etunimi = $_POST['uusi_etunimi'];
     $uusi_sukunimi = $_POST['uusi_sukunimi'];
     $uusi_sahkoposti = $_POST['uusi_sahkoposti'];
     $uusi_puhelinnumero = $_POST['uusi_puhelinnumero'];
-    
-// Päivitä varauksen tiedot tietokantaan
-$sql = "UPDATE ASIAKAS SET etunimi = '$uusi_etunimi', sukunimi = '$uusi_sukunimi', sahkoposti = '$uusi_sahkoposti', puhelinnro = '$uusi_puhelinnumero' WHERE varaustunnus = '$varaustunnus'";
-// Tämä suorittaa tietokantakyselyn, jonka koodi on tallennettu muuttujaan $sql. Tämä kysely suoritetaan käyttäen $yhteys-muuttujaa.
-// Jos se onnistuu palautetaan true
-if ($yhteys->query($sql) === TRUE) {
-    header("Location: ../pages/muokkausonnistui.html");
-    exit();
-} else {
-    echo "Virhe päivitettäessä varauksen tietoja: " . $yhteys->error;
-}}
+
+    try {
+        // Prepare statement
+        $stmt = $yhteys->prepare("UPDATE ASIAKAS SET etunimi = ?, sukunimi = ?, sahkoposti = ?, puhelinnro = ? WHERE varaustunnus = ?");
+        
+        // Bind parameters
+        $stmt->bind_param("ssssi", $uusi_etunimi, $uusi_sukunimi, $uusi_sahkoposti, $uusi_puhelinnumero, $varaustunnus);
+        
+        // Execute statement
+        $stmt->execute();
+        
+        // Redirect on success
+        header("Location: ../pages/muokkausonnistui.html");
+        exit();
+    } catch (Exception $e) {
+        // Error handling
+        header("Location: ../pages/yhteysvirhe.html");
+        exit;
+    }
+}
 
 // Sulje tietokantayhteys
 $yhteys->close();
-
 ?>
+
