@@ -73,14 +73,14 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo '<form method="post" action="poistavaraus.php">'; 
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
         // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
-        echo '<input type="submit" name="poista" value="Poista varaus" onclick="return confirmDelete()">';
+        echo '<input type="submit" name="poista" value="Poista varaus" onclick="return vahvistaPoisto()">';
         echo '</form>' . "<br>";
         echo "<em><u>Jos haluat muokata tarkempia tietojasi ota yhteyttä!</u></em>". "<br>";
         echo "Fore@kahvila.fi "."<br><br>";
         echo '</div>';
         // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
         echo '<script>';
-        echo 'function confirmDelete() {';
+        echo 'function vahvistaPoisto() {';
         echo 'return confirm("Haluatko varmasti poistaa varauksen?")';
         echo '}';
         echo '</script>';
