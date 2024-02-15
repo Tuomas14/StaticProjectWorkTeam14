@@ -17,7 +17,14 @@
 <?php
 include ("./connect.php");
 
+// Tarkista, onko lomakkeen tiedot lähetetty
+// isset tarkistaa onko varaustunnus asetettu, jos se on asetettu palautetaan true muutoin false
+// !empty tarkastaa jos avain on asetettu ja sen arvo ei ole tyhjä, tämä ehto palauttaa true, muuten false.
+
 if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
+// Jos molemmat näistä ehdoista ovat (true), silloin suoritetaan seuraava rivi:
+// Tässä luodaan muuttuja nimeltä $varaustunnus asetetaan siihen 'varaustunnus' avaimen arvo, joka on lähetetty POST-pyynnön mukana.
+// Tämä mahdollistaa sen, että tämän muuttujan avulla voidaan käsitellä ja käyttää POST-pyynnössä mukana lähetettyä varaustunnusta jatkossa koodissa.
     // Valmistellaan kysely
     $varaustunnus = $_POST['varaustunnus'];
     $sql = "SELECT * FROM ASIAKAS WHERE varaustunnus = ?";
@@ -30,10 +37,12 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         $stmt->execute();
         // Haetaan tulos
         $result = $stmt->get_result();
-        // Tarkistetaan onko rivejä
-        if ($result->num_rows > 0) {
-            // Tulosta varauksen tiedot ja mahdollista muokkaaminen
-            $row = $result->fetch_assoc();
+       // Tarkistetaan onko tietokannasta saatujen hakutulosten määrä suurempi kuin nolla, jotta voidaan suorittaa jatkotoimenpiteet.    
+    if ($result->num_rows > 0) {
+        // Tulosta varauksen tiedot ja mahdollista muokkaaminen
+        // Metodi fetch_assoc() hakee tietokannasta yksi rivi kerrallaan hakutuloksia ($result) ja palauttaa tiedon
+        // jossa avaimet ovat tietokannan sarakkeiden nimet ja arvot ovat vastaavat rivin arvot
+        $row = $result->fetch_assoc();
         echo '<div class="paateksti">';
         echo "<em><u>Varauksen tiedot</u></em>" . "<br>";
         // hakee tietokannasta halutun tiedon joka sijaitsee $row assosiatiivisessa taulukossa
