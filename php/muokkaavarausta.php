@@ -69,16 +69,18 @@ if(isset($_POST['varaustunnus']) && !empty($_POST['varaustunnus'])) {
         echo '<input type="submit" value="Tallenna muutokset">'."<br><br>";
         echo '</form>';
 
-        // Lisätään poistanappi
+        // Lisätään poistamiselle oma form lomake joka ohjataan poistavaraus.php tiedostolle
+        // Lisätään "hidden" painike mikä käyttää php tiedoston muuttujaa $poistettava
         echo '<form method="post" action="poistavaraus.php">'; 
         echo '<input type="hidden" name="poistettava" value="' . $varaustunnus . '">';
-        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
+        // Lisätään poista näppäin mitä painettaessa toteuttaa allaolevan javascript funktion "vahvistaPoisto"
         echo '<input type="submit" name="poista" value="Poista varaus" onclick="return vahvistaPoisto()">';
         echo '</form>' . "<br>";
+        // Lisätiedot muiden tietojen muokkaamista varten
         echo "<em><u>Jos haluat muokata tarkempia tietojasi ota yhteyttä!</u></em>". "<br>";
         echo "Fore@kahvila.fi "."<br><br>";
         echo '</div>';
-        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi
+        // Lisätään JavaScript-funktio varmistusikkunan näyttämiseksi poista nappia painettaessa
         echo '<script>';
         echo 'function vahvistaPoisto() {';
         echo 'return confirm("Haluatko varmasti poistaa varauksen?")';
