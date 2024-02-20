@@ -7,7 +7,7 @@ if ($yhteys->connect_error) {
     exit;
 }
 
-// Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty
+// Tarkista, onko lomakkeen tiedot lähetetty ja ovatko kaikki kentät täytetty jos näin on palautetaan true ja koodia jatketaan eteenpäin
 if (
     isset($_POST['varaustunnus'], $_POST['uusi_etunimi'], $_POST['uusi_sukunimi'], $_POST['uusi_sahkoposti'], $_POST['uusi_puhelinnumero']) &&
     !empty($_POST['varaustunnus']) && !empty($_POST['uusi_etunimi']) && !empty($_POST['uusi_sukunimi']) && !empty($_POST['uusi_sahkoposti']) && !empty($_POST['uusi_puhelinnumero'])
@@ -23,17 +23,17 @@ if (
         // Prepare statement
         $stmt = $yhteys->prepare("UPDATE ASIAKAS SET etunimi = ?, sukunimi = ?, sahkoposti = ?, puhelinnro = ? WHERE varaustunnus = ?");
         
-        // Bind parameters
+        // parametrit
         $stmt->bind_param("ssssi", $uusi_etunimi, $uusi_sukunimi, $uusi_sahkoposti, $uusi_puhelinnumero, $varaustunnus);
         
-        // Execute statement
+        // tämä suorittaa statementin
         $stmt->execute();
         
-        // Redirect on success
+        // jos onnistuu ohjataan sivulle
         header("Location: ../pages/muokkausonnistui.html");
         exit();
     } catch (Exception $e) {
-        // Error handling
+        // jos epäonnistuu ohjayaan sivulle
         header("Location: ../pages/yhteysvirhe.html");
         exit;
     }
